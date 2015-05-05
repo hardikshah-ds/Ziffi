@@ -1,0 +1,431 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		568DA8531AF8E8230033C255 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 568DA8521AF8E8230033C255 /* main.m */; };
+		568DA8561AF8E8230033C255 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 568DA8551AF8E8230033C255 /* AppDelegate.m */; };
+		568DA8591AF8E8230033C255 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 568DA8581AF8E8230033C255 /* ViewController.m */; };
+		568DA85C1AF8E8230033C255 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 568DA85A1AF8E8230033C255 /* Main.storyboard */; };
+		568DA85E1AF8E8230033C255 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 568DA85D1AF8E8230033C255 /* Images.xcassets */; };
+		568DA8611AF8E8230033C255 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 568DA85F1AF8E8230033C255 /* LaunchScreen.xib */; };
+		568DA86D1AF8E8230033C255 /* ZiffiTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 568DA86C1AF8E8230033C255 /* ZiffiTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		568DA8671AF8E8230033C255 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 568DA8451AF8E8230033C255 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 568DA84C1AF8E8230033C255;
+			remoteInfo = Ziffi;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		568DA84D1AF8E8230033C255 /* Ziffi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ziffi.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		568DA8511AF8E8230033C255 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		568DA8521AF8E8230033C255 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		568DA8541AF8E8230033C255 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		568DA8551AF8E8230033C255 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		568DA8571AF8E8230033C255 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		568DA8581AF8E8230033C255 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		568DA85B1AF8E8230033C255 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		568DA85D1AF8E8230033C255 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		568DA8601AF8E8230033C255 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		568DA8661AF8E8230033C255 /* ZiffiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZiffiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		568DA86B1AF8E8230033C255 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		568DA86C1AF8E8230033C255 /* ZiffiTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZiffiTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		568DA84A1AF8E8230033C255 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		568DA8631AF8E8230033C255 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		568DA8441AF8E8230033C255 = {
+			isa = PBXGroup;
+			children = (
+				568DA84F1AF8E8230033C255 /* Ziffi */,
+				568DA8691AF8E8230033C255 /* ZiffiTests */,
+				568DA84E1AF8E8230033C255 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		568DA84E1AF8E8230033C255 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				568DA84D1AF8E8230033C255 /* Ziffi.app */,
+				568DA8661AF8E8230033C255 /* ZiffiTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		568DA84F1AF8E8230033C255 /* Ziffi */ = {
+			isa = PBXGroup;
+			children = (
+				568DA8541AF8E8230033C255 /* AppDelegate.h */,
+				568DA8551AF8E8230033C255 /* AppDelegate.m */,
+				568DA8571AF8E8230033C255 /* ViewController.h */,
+				568DA8581AF8E8230033C255 /* ViewController.m */,
+				568DA85A1AF8E8230033C255 /* Main.storyboard */,
+				568DA85D1AF8E8230033C255 /* Images.xcassets */,
+				568DA85F1AF8E8230033C255 /* LaunchScreen.xib */,
+				568DA8501AF8E8230033C255 /* Supporting Files */,
+			);
+			path = Ziffi;
+			sourceTree = "<group>";
+		};
+		568DA8501AF8E8230033C255 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				568DA8511AF8E8230033C255 /* Info.plist */,
+				568DA8521AF8E8230033C255 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		568DA8691AF8E8230033C255 /* ZiffiTests */ = {
+			isa = PBXGroup;
+			children = (
+				568DA86C1AF8E8230033C255 /* ZiffiTests.m */,
+				568DA86A1AF8E8230033C255 /* Supporting Files */,
+			);
+			path = ZiffiTests;
+			sourceTree = "<group>";
+		};
+		568DA86A1AF8E8230033C255 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				568DA86B1AF8E8230033C255 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		568DA84C1AF8E8230033C255 /* Ziffi */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 568DA8701AF8E8230033C255 /* Build configuration list for PBXNativeTarget "Ziffi" */;
+			buildPhases = (
+				568DA8491AF8E8230033C255 /* Sources */,
+				568DA84A1AF8E8230033C255 /* Frameworks */,
+				568DA84B1AF8E8230033C255 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Ziffi;
+			productName = Ziffi;
+			productReference = 568DA84D1AF8E8230033C255 /* Ziffi.app */;
+			productType = "com.apple.product-type.application";
+		};
+		568DA8651AF8E8230033C255 /* ZiffiTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 568DA8731AF8E8230033C255 /* Build configuration list for PBXNativeTarget "ZiffiTests" */;
+			buildPhases = (
+				568DA8621AF8E8230033C255 /* Sources */,
+				568DA8631AF8E8230033C255 /* Frameworks */,
+				568DA8641AF8E8230033C255 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				568DA8681AF8E8230033C255 /* PBXTargetDependency */,
+			);
+			name = ZiffiTests;
+			productName = ZiffiTests;
+			productReference = 568DA8661AF8E8230033C255 /* ZiffiTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		568DA8451AF8E8230033C255 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0630;
+				ORGANIZATIONNAME = Docsuggest;
+				TargetAttributes = {
+					568DA84C1AF8E8230033C255 = {
+						CreatedOnToolsVersion = 6.3.1;
+					};
+					568DA8651AF8E8230033C255 = {
+						CreatedOnToolsVersion = 6.3.1;
+						TestTargetID = 568DA84C1AF8E8230033C255;
+					};
+				};
+			};
+			buildConfigurationList = 568DA8481AF8E8230033C255 /* Build configuration list for PBXProject "Ziffi" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 568DA8441AF8E8230033C255;
+			productRefGroup = 568DA84E1AF8E8230033C255 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				568DA84C1AF8E8230033C255 /* Ziffi */,
+				568DA8651AF8E8230033C255 /* ZiffiTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		568DA84B1AF8E8230033C255 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				568DA85C1AF8E8230033C255 /* Main.storyboard in Resources */,
+				568DA8611AF8E8230033C255 /* LaunchScreen.xib in Resources */,
+				568DA85E1AF8E8230033C255 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		568DA8641AF8E8230033C255 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		568DA8491AF8E8230033C255 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				568DA8591AF8E8230033C255 /* ViewController.m in Sources */,
+				568DA8561AF8E8230033C255 /* AppDelegate.m in Sources */,
+				568DA8531AF8E8230033C255 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		568DA8621AF8E8230033C255 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				568DA86D1AF8E8230033C255 /* ZiffiTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		568DA8681AF8E8230033C255 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 568DA84C1AF8E8230033C255 /* Ziffi */;
+			targetProxy = 568DA8671AF8E8230033C255 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		568DA85A1AF8E8230033C255 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				568DA85B1AF8E8230033C255 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		568DA85F1AF8E8230033C255 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				568DA8601AF8E8230033C255 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		568DA86E1AF8E8230033C255 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		568DA86F1AF8E8230033C255 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		568DA8711AF8E8230033C255 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Ziffi/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		568DA8721AF8E8230033C255 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Ziffi/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		568DA8741AF8E8230033C255 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = ZiffiTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Ziffi.app/Ziffi";
+			};
+			name = Debug;
+		};
+		568DA8751AF8E8230033C255 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = ZiffiTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Ziffi.app/Ziffi";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		568DA8481AF8E8230033C255 /* Build configuration list for PBXProject "Ziffi" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				568DA86E1AF8E8230033C255 /* Debug */,
+				568DA86F1AF8E8230033C255 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		568DA8701AF8E8230033C255 /* Build configuration list for PBXNativeTarget "Ziffi" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				568DA8711AF8E8230033C255 /* Debug */,
+				568DA8721AF8E8230033C255 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		568DA8731AF8E8230033C255 /* Build configuration list for PBXNativeTarget "ZiffiTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				568DA8741AF8E8230033C255 /* Debug */,
+				568DA8751AF8E8230033C255 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 568DA8451AF8E8230033C255 /* Project object */;
+}
