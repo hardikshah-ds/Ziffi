@@ -17,8 +17,6 @@
 		568DA8861AF8EB050033C255 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 568DA8851AF8EB050033C255 /* FBSDKLoginKit.framework */; };
 		568DA8891AF8F3940033C255 /* UserData.m in Sources */ = {isa = PBXBuildFile; fileRef = 568DA8881AF8F3940033C255 /* UserData.m */; };
 		568DA88C1AF8F4320033C255 /* CommonFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 568DA88B1AF8F4320033C255 /* CommonFunctions.m */; };
-		568DA8901AF8F9580033C255 /* GoogleOpenSource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 568DA88D1AF8F9580033C255 /* GoogleOpenSource.framework */; };
-		568DA8921AF8F9580033C255 /* GooglePlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 568DA88F1AF8F9580033C255 /* GooglePlus.framework */; };
 		568DA8941AF8F97B0033C255 /* GooglePlus.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 568DA8931AF8F97B0033C255 /* GooglePlus.bundle */; };
 		568DA8961AF8FAA30033C255 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 568DA8951AF8FAA30033C255 /* AddressBook.framework */; };
 		568DA8981AF8FAA80033C255 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 568DA8971AF8FAA80033C255 /* AssetsLibrary.framework */; };
@@ -69,6 +67,9 @@
 		568DA9441AFA0DA60033C255 /* ForgotPasswordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 568DA9431AFA0DA60033C255 /* ForgotPasswordVC.m */; };
 		568DA9471AFA0DC90033C255 /* ProfileVerificationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 568DA9461AFA0DC90033C255 /* ProfileVerificationVC.m */; };
 		568DA94B1AFA4EC20033C255 /* HomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 568DA94A1AFA4EC20033C255 /* HomeVC.m */; };
+		56D1BA3D1AFB2B41008D51FF /* GoogleOpenSource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56D1BA3B1AFB2B41008D51FF /* GoogleOpenSource.framework */; };
+		56D1BA3E1AFB2B41008D51FF /* GooglePlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56D1BA3C1AFB2B41008D51FF /* GooglePlus.framework */; };
+		56D1BA411AFB2B98008D51FF /* BaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 56D1BA401AFB2B98008D51FF /* BaseVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,8 +100,6 @@
 		568DA8881AF8F3940033C255 /* UserData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserData.m; sourceTree = "<group>"; };
 		568DA88A1AF8F4320033C255 /* CommonFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonFunctions.h; sourceTree = "<group>"; };
 		568DA88B1AF8F4320033C255 /* CommonFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonFunctions.m; sourceTree = "<group>"; };
-		568DA88D1AF8F9580033C255 /* GoogleOpenSource.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleOpenSource.framework; path = "../../../../Downloads/google-plus-ios-sdk-1.7.1/GoogleOpenSource.framework"; sourceTree = "<group>"; };
-		568DA88F1AF8F9580033C255 /* GooglePlus.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GooglePlus.framework; path = "../../../../Downloads/google-plus-ios-sdk-1.7.1/GooglePlus.framework"; sourceTree = "<group>"; };
 		568DA8931AF8F97B0033C255 /* GooglePlus.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GooglePlus.bundle; sourceTree = "<group>"; };
 		568DA8951AF8FAA30033C255 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		568DA8971AF8FAA80033C255 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
@@ -193,6 +192,10 @@
 		568DA9461AFA0DC90033C255 /* ProfileVerificationVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileVerificationVC.m; sourceTree = "<group>"; };
 		568DA9491AFA4EC20033C255 /* HomeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeVC.h; sourceTree = "<group>"; };
 		568DA94A1AFA4EC20033C255 /* HomeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeVC.m; sourceTree = "<group>"; };
+		56D1BA3B1AFB2B41008D51FF /* GoogleOpenSource.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleOpenSource.framework; sourceTree = "<group>"; };
+		56D1BA3C1AFB2B41008D51FF /* GooglePlus.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GooglePlus.framework; sourceTree = "<group>"; };
+		56D1BA3F1AFB2B98008D51FF /* BaseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseVC.h; sourceTree = "<group>"; };
+		56D1BA401AFB2B98008D51FF /* BaseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -208,11 +211,11 @@
 				568DA8A01AF8FAC80033C255 /* CoreGraphics.framework in Frameworks */,
 				568DA89E1AF8FAC00033C255 /* CoreMotion.framework in Frameworks */,
 				568DA89C1AF8FAB80033C255 /* CoreLocation.framework in Frameworks */,
+				56D1BA3D1AFB2B41008D51FF /* GoogleOpenSource.framework in Frameworks */,
 				568DA89A1AF8FAB00033C255 /* Foundation.framework in Frameworks */,
+				56D1BA3E1AFB2B41008D51FF /* GooglePlus.framework in Frameworks */,
 				568DA8981AF8FAA80033C255 /* AssetsLibrary.framework in Frameworks */,
 				568DA8961AF8FAA30033C255 /* AddressBook.framework in Frameworks */,
-				568DA8901AF8F9580033C255 /* GoogleOpenSource.framework in Frameworks */,
-				568DA8921AF8F9580033C255 /* GooglePlus.framework in Frameworks */,
 				568DA8861AF8EB050033C255 /* FBSDKLoginKit.framework in Frameworks */,
 				568DA8841AF8E9DF0033C255 /* FBSDKCoreKit.framework in Frameworks */,
 			);
@@ -296,6 +299,8 @@
 			children = (
 				568DA9481AFA4EB60033C255 /* Home */,
 				568DA93B1AFA07700033C255 /* AccountCreation */,
+				56D1BA3F1AFB2B98008D51FF /* BaseVC.h */,
+				56D1BA401AFB2B98008D51FF /* BaseVC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -424,6 +429,8 @@
 		568DA9301AF9EE0C0033C255 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				56D1BA3B1AFB2B41008D51FF /* GoogleOpenSource.framework */,
+				56D1BA3C1AFB2B41008D51FF /* GooglePlus.framework */,
 				568DA8A91AF8FAEC0033C255 /* UIKit.framework */,
 				568DA8A71AF8FAE70033C255 /* SystemConfiguration.framework */,
 				568DA8A51AF8FADE0033C255 /* Security.framework */,
@@ -436,8 +443,6 @@
 				568DA8971AF8FAA80033C255 /* AssetsLibrary.framework */,
 				568DA8951AF8FAA30033C255 /* AddressBook.framework */,
 				568DA8931AF8F97B0033C255 /* GooglePlus.bundle */,
-				568DA88D1AF8F9580033C255 /* GoogleOpenSource.framework */,
-				568DA88F1AF8F9580033C255 /* GooglePlus.framework */,
 				568DA8851AF8EB050033C255 /* FBSDKLoginKit.framework */,
 				568DA8831AF8E9DF0033C255 /* FBSDKCoreKit.framework */,
 			);
@@ -604,6 +609,7 @@
 				568DA9281AF9EAA10033C255 /* SBJsonTokeniser.m in Sources */,
 				568DA92D1AF9EAE10033C255 /* WebServices.m in Sources */,
 				568DA8DF1AF9DDA50033C255 /* UIImageView+AFNetworking.m in Sources */,
+				56D1BA411AFB2B98008D51FF /* BaseVC.m in Sources */,
 				568DA8891AF8F3940033C255 /* UserData.m in Sources */,
 				568DA8DD1AF9DDA50033C255 /* UIAlertView+AFNetworking.m in Sources */,
 				568DA9211AF9EAA10033C255 /* SBJsonStreamParser.m in Sources */,
@@ -753,6 +759,7 @@
 					"$(inherited)",
 					/Users/hardik/Documents/FacebookSDK,
 					"/Users/hardik/Downloads/google-plus-ios-sdk-1.7.1",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Ziffi/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -769,6 +776,7 @@
 					"$(inherited)",
 					/Users/hardik/Documents/FacebookSDK,
 					"/Users/hardik/Downloads/google-plus-ios-sdk-1.7.1",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Ziffi/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

@@ -11,7 +11,7 @@
 
 @class GPPSignInButton;
 
-@interface LoginVC : UIViewController<GPPSignInDelegate>
+@interface LoginVC : BaseVC <GPPSignInDelegate>
 
 @property (retain, nonatomic) IBOutlet GPPSignInButton *signInButton;
 @property (weak, nonatomic) IBOutlet UITextField *emailAddress;

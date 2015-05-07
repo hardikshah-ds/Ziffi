@@ -17,6 +17,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"AppBackground"]];
+    self.window.backgroundColor = background;
     [[AFNetworkReachabilityManager sharedManager] startMonitoring];
     [GPPSignIn sharedInstance].clientID = GOOGLE_ID_DEV;
     return [[FBSDKApplicationDelegate sharedInstance] application:application

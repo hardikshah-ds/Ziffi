@@ -388,6 +388,8 @@
     
 }
 
+
+#pragma mark - Update Profile Methods
 +(void)UpdateProfile:(NSString *)emailAddress
            withName:(NSString *)name
            withContactNo:(NSString *)contactno

@@ -19,6 +19,7 @@
 #import "WebServices.h"
 #import "SVProgressHUD.h"
 
+#import "BaseVC.h"
 #import "ProfileVerificationVC.h"
 #import "HomeVC.h"
 
