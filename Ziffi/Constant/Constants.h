@@ -10,6 +10,7 @@
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import <GooglePlus/GooglePlus.h>
 #import <GoogleOpenSource/GoogleOpenSource.h>
+#import <CoreLocation/CoreLocation.h>
 #import "AFNetworking.h"
 #import "AFNetworkReachabilityManager.h"
 #import "SBJson.h"
@@ -19,13 +20,33 @@
 #import "WebServices.h"
 #import "SVProgressHUD.h"
 
-#import "BaseVC.h"
+#import "AppDelegate.h"
+
 #import "ProfileVerificationVC.h"
 #import "HomeVC.h"
+#import "SearchVC.h"
+#import "OfferVC.h"
+#import "BookingVC.h"
+#import "ReferVC.h"
+#import "SalonListingCell.h"
+#import "ListingVC.h"
+#import "TopWalletBar.h"
+#import "DoctorListingCell.h"
+#import "DiagnosticsListingCell.h"
 
 #ifndef Ziffi_Constants_h
 #define Ziffi_Constants_h
 
+#define GreenColor @"0AB4B4"
+#define RedColor @"DF4A32"
+#define BlueColor @"49639F"
+#define BackGroundColor @"E5E6E7"
+#define TabBarColor @"0C2238"
+
+#define FONTBOLD @"Roboto-Bold"
+#define FONTLIGHT @"Roboto-Light"
+#define FONTREGULAR @"Roboto-Regular"
+#define FONTMEDIUM @"Roboto-Medium"
 
 #define FACEBOOK_ID_PRO @"181896131828390"
 #define FACEBOOK_ID_DEV @"838403506246406"
@@ -50,6 +71,8 @@
 #define NameWarning @"Sorry ! Please enter valid name"
 #define ContactWarning @"Sorry ! Please enter valid contact no."
 #define PasswordMisMatchWarning @"Sorry ! Your password and confirm password does not match. Please correct it !"
+#define ValidTextWarning @"Sorry ! Please enter e-mail or mobile number"
+#define OTPTextWarning @"Sorry ! Please enter correct OTP"
 
 //==================================================================
 //============ API CALLS =================================
@@ -66,5 +89,8 @@
 #define VERIFY_PASSWORD                     [kAPIEndpointHost stringByAppendingString:@"login/setpassword"]
 #define UPDATE_PROFILE                          [kAPIEndpointHost stringByAppendingString:@"account/verify_profile"]
 #define VERIFY_PROFILE_OTP                  [kAPIEndpointHost stringByAppendingString:@"account/verify"]
+#define DISCOUNTS                                [kAPIEndpointHost stringByAppendingString:@"discounts/listing"]
+#define SUGGESTIONQUERY                                [kAPIEndpointHost stringByAppendingString:@"search/suggestions/q"]
+#define SEARCHQUERY                                [kAPIEndpointHost stringByAppendingString:@"search/"]
 
 #endif

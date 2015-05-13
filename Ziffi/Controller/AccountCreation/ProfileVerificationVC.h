@@ -8,14 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import "Constants.h"
+#import "BaseVC.h"
 
-@interface ProfileVerificationVC : UIViewController
+@interface ProfileVerificationVC : BaseVC
 
 @property (weak, nonatomic) IBOutlet UIView *updateProfileView;
 @property (weak, nonatomic) IBOutlet UITextField *userEmail;
 @property (weak, nonatomic) IBOutlet UITextField *userName;
 @property (weak, nonatomic) IBOutlet UITextField *userContactno;
-@property (weak, nonatomic) IBOutlet UISegmentedControl *genderSegment;
+@property (weak, nonatomic) IBOutlet UIButton *genderMale;
+@property (weak, nonatomic) IBOutlet UIButton *genderFemale;
 @property (strong, nonatomic) NSString *userGender;
 @property (weak, nonatomic) IBOutlet UIView *otpView;
 @property (weak, nonatomic) IBOutlet UITextField *textOTP;

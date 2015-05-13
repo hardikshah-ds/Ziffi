@@ -29,6 +29,10 @@
         self.user_wallet_integrated = 0;
         self.user_session_name = @"";
         self.user_session_id = @"";
+        self.user_ziffi_balance = @"";
+        self.user_own_balance = @"";
+        self.user_total_balance = @"";
+        self.user_wallet_status = @"";
     }
     return self;
 }
@@ -48,9 +52,13 @@
         self.user_city = [decoder decodeObjectForKey:@"user_city"];
         self.user_preferred_city = [decoder decodeObjectForKey:@"user_preferred_city"];
         self.user_preferred_city_name = [decoder decodeObjectForKey:@"user_preferred_city_name"];
-        self.user_wallet_integrated = [decoder decodeObjectForKey:@"user_wallet_integrated"];
+        self.user_wallet_integrated = [[decoder decodeObjectForKey:@"user_wallet_integrated"] boolValue];
         self.user_session_name = [decoder decodeObjectForKey:@"user_session_name"];
         self.user_session_id = [decoder decodeObjectForKey:@"user_session_id"];
+        self.user_ziffi_balance = [decoder decodeObjectForKey:@"user_ziffi_balance"];
+        self.user_own_balance = [decoder decodeObjectForKey:@"user_own_balance"];
+        self.user_total_balance = [decoder decodeObjectForKey:@"user_total_balance"];
+        self.user_wallet_status = [decoder decodeObjectForKey:@"user_wallet_status"];
     }
     return self;
 }
@@ -71,6 +79,10 @@
     [encoder encodeObject:self.user_profilepic forKey:@"user_wallet_integrated"];
     [encoder encodeObject:self.user_profilepic forKey:@"user_session_name"];
     [encoder encodeObject:self.user_profilepic forKey:@"user_session_id"];
+    [encoder encodeObject:self.user_ziffi_balance forKey:@"user_ziffi_balance"];
+    [encoder encodeObject:self.user_own_balance forKey:@"user_own_balance"];
+    [encoder encodeObject:self.user_total_balance forKey:@"user_total_balance"];
+    [encoder encodeObject:self.user_wallet_status forKey:@"user_wallet_status"];
 }
 
 

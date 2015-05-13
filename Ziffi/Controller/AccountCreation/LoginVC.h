@@ -16,6 +16,7 @@
 @property (retain, nonatomic) IBOutlet GPPSignInButton *signInButton;
 @property (weak, nonatomic) IBOutlet UITextField *emailAddress;
 @property (weak, nonatomic) IBOutlet UITextField *password;
+@property (weak, nonatomic) IBOutlet UIButton *textSignupBtn;
 
 - (IBAction)LoginWithFacebook:(id)sender;
 - (IBAction)LoginWithZiffi:(id)sender;

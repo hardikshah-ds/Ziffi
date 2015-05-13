@@ -18,14 +18,38 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    [[GPPSignIn sharedInstance] trySilentAuthentication];
-//    if ([[GPPSignInButton sharedInstance] authentication]) {
-//        NSLog(@"Already Login With Google");
-//    }
-//    else{
-//        NSLog(@"Not Login With Google");
-//    }
-    // Do any additional setup after loading the view.
+    self.emailAddress.text = @"shaha@gmail.com";
+    self.password.text = @"aaa";
+    [self SetAttributedTextForSignup];
+}
+
+-(void)SetAttributedTextForSignup
+{
+    NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
+    [style setAlignment:NSTextAlignmentCenter];
+    [style setLineBreakMode:NSLineBreakByWordWrapping];
+    UIColor *foregroundColor = [UIColor whiteColor];
+    
+    UIFont *font1 = [UIFont fontWithName:@"Roboto-Regular" size:14];
+    UIFont *font2 = [UIFont fontWithName:@"Roboto-Bold" size:14];
+    NSDictionary *dict1 = @{NSUnderlineStyleAttributeName:@(NSUnderlineStyleNone),
+                            NSFontAttributeName:font1,
+                            foregroundColor:NSForegroundColorAttributeName,
+                            NSParagraphStyleAttributeName:style}; // Added line
+    NSDictionary *dict2 = @{NSUnderlineStyleAttributeName:@(NSUnderlineStyleSingle),
+                            NSFontAttributeName:font2,
+                            foregroundColor:NSForegroundColorAttributeName,
+                            NSParagraphStyleAttributeName:style}; // Added line
+    
+    NSMutableAttributedString *attString = [[NSMutableAttributedString alloc] init];
+    [attString appendAttributedString:[[NSAttributedString alloc] initWithString:@"Don't have an account? "    attributes:dict1]];
+    [attString appendAttributedString:[[NSAttributedString alloc] initWithString:@"Sign Up Now"      attributes:dict2]];
+    [self.textSignupBtn setAttributedTitle:attString forState:UIControlStateNormal];
+    [[self.textSignupBtn titleLabel] setNumberOfLines:0];
+    [[self.textSignupBtn titleLabel] setLineBreakMode:NSLineBreakByWordWrapping];
+    [[self.textSignupBtn titleLabel] setTextColor:[UIColor whiteColor]];
+    
+    
 }
 
 
@@ -52,12 +76,12 @@
                     else if (success == LoginStatusSuccessfulWithVerication)
                     {
                         [SVProgressHUD showSuccessWithStatus:@"Login with ziffi successful with verification"];
-                        HomeVC *newView = [self.storyboard instantiateViewControllerWithIdentifier:@"HomeVC"];
-                        [self.navigationController pushViewController:newView animated:YES];
+                        AppDelegate  *appD = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+                        [appD LoadStoryBoardWithMainTabModule];
 
                     }
                     else {
-                        [SVProgressHUD showSuccessWithStatus:@"Error in Login with ziffi"];
+                        //[SVProgressHUD showSuccessWithStatus:@"Error in Login with ziffi"];
                     }
                 }];
             }
@@ -89,9 +113,8 @@
             }
             else if (success == LoginStatusSuccessfulWithVerication) {
                 [SVProgressHUD showSuccessWithStatus:@"Login with facebook successful with verification"];
-                HomeVC *newView = [self.storyboard instantiateViewControllerWithIdentifier:@"HomeVC"];
-                [self.navigationController pushViewController:newView animated:YES];
-
+                AppDelegate  *appD = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+                [appD LoadStoryBoardWithMainTabModule];
             }
             else {
                 [SVProgressHUD showSuccessWithStatus:@"Error in Login with facebook"];
@@ -101,6 +124,18 @@
     else {
         [CommonFunctions showWarningAlert:ReachabilityWarning title:APP_NAME];
     }
+}
+
+-(IBAction)LoginWithGoogle:(id)sender
+{
+    
+    GPPSignIn *signIn = [GPPSignIn sharedInstance];
+    signIn.clientID= GOOGLE_ID_DEV;
+    [signIn setScopes:[NSArray arrayWithObject:@"https://www.googleapis.com/auth/plus.login"]];
+    [signIn setDelegate:self];
+    signIn.shouldFetchGoogleUserID=YES;
+    signIn.shouldFetchGoogleUserEmail=YES;
+    [signIn authenticate];
 }
 
 #pragma mark - Login With Google Delegates
@@ -122,12 +157,12 @@
             }
             else if (success == LoginStatusSuccessfulWithVerication) {
                 [SVProgressHUD showSuccessWithStatus:@"Login with google successful with verification"];
-                HomeVC *newView = [self.storyboard instantiateViewControllerWithIdentifier:@"HomeVC"];
-                [self.navigationController pushViewController:newView animated:YES];
+                AppDelegate  *appD = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+                [appD LoadStoryBoardWithMainTabModule];
 
             }
             else {
-                [SVProgressHUD showSuccessWithStatus:@"Error in Login with google"];
+                //[SVProgressHUD showSuccessWithStatus:@"Error in Login with google"];
             }
             
             

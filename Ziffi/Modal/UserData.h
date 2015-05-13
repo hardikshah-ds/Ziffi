@@ -25,5 +25,9 @@
 @property (nonatomic, strong) NSString *user_session_name;
 @property (nonatomic, strong) NSString *user_session_id;
 @property (nonatomic, strong) NSString *user_profilepic;
+@property (nonatomic, strong) NSString *user_total_balance;
+@property (nonatomic, strong) NSString *user_ziffi_balance;
+@property (nonatomic, strong) NSString *user_own_balance;
+@property (nonatomic, strong) NSString *user_wallet_status;
 
 @end

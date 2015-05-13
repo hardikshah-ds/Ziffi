@@ -31,16 +31,26 @@
     self.updateProfileView.hidden = NO;
     self.otpView.hidden = YES;
     self.userEmail.text = object.user_email;
-    self.genderSegment.selectedSegmentIndex = 0;
     self.userGender = @"Male";
+}
+
+- (IBAction)backPressed:(id)sender {
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)genderSelection:(id)sender {
     
-    if (self.genderSegment.selectedSegmentIndex == 0) {
+    if ([sender tag] == 0) {
+        
+        [self.genderMale setBackgroundImage:[UIImage imageNamed:@"male-tap"] forState:UIControlStateNormal];
+        [self.genderFemale setBackgroundImage:[UIImage imageNamed:@"female"] forState:UIControlStateNormal];
         self.userGender = @"Male";
     }
     else {
+        
+        [self.genderFemale setBackgroundImage:[UIImage imageNamed:@"female-tap"] forState:UIControlStateNormal];
+        [self.genderMale setBackgroundImage:[UIImage imageNamed:@"male"] forState:UIControlStateNormal];
         self.userGender = @"Female";
     }
 }
@@ -73,8 +83,8 @@
             [WebServices UpdateProfileWithOTP:self.textOTP.text withSessionId:sessionid withContactNo:self.userContactno.text withCompletionHandler:^(bool success) {
                 if (success) {
                     //Redirect to home screen
-                    HomeVC *newView = [self.storyboard instantiateViewControllerWithIdentifier:@"HomeVC"];
-                    [self.navigationController pushViewController:newView animated:YES];
+                    AppDelegate  *appD = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+                    [appD LoadStoryBoardWithMainTabModule];
                 }
             }];
         }

@@ -22,4 +22,16 @@
 +(BOOL) NSStringIsValidEmail:(NSString *)checkString;
 +(UserData *) retriveCompleteUserData;
 
+// CoreGraphics Methods
++ (UIImage *)imageWithGradient:(UIImage *)img startColor:(UIColor *)color1 endColor:(UIColor *)color2;
++ (UIColor *)colorWithHexString:(NSString *)str;
++ (void)ApplyShadow:(UIView *)forView;
+
+// Animation Methods
++ (void)performAnimationOnViewWithoutHandler:(UIView *)view duration:(NSTimeInterval) duration delay:(NSTimeInterval)delay;
++(void)performAnimationOnView:(UIView *)view duration:(NSTimeInterval) duration delay:(NSTimeInterval)delay withCompletionHandler:(void (^)(NSInteger success))callback;
++ (void)fadeInLayer:(CALayer *)l;
++ (void)viewSlideInFromTopToBottom:(UIView *)views;
++ (void)viewSlideInFromBottomToTop:(UIView *)views;
+
 @end

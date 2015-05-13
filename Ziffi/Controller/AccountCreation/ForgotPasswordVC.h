@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Constants.h"
 
-@interface ForgotPasswordVC : UIViewController
+@interface ForgotPasswordVC : BaseVC
 
 @property (weak, nonatomic) IBOutlet UITextField *resetWithText;
 @property (weak, nonatomic) IBOutlet UIView *emailView;

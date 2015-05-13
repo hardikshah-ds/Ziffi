@@ -65,12 +65,12 @@
                                  objUser.user_name = userName;
                              }
                              
-                             [self RegisterWithZiffi:objUser.user_email withPassword:objUser.user_facebookid withConfirmPassword:objUser.user_facebookid withFirstname:objUser.user_firstname withGender:objUser.user_gender withPhone:@"" withReferral:@"" withCompletionHandler:^(NSInteger success) {
-                                 if (success ==  LoginStatusSuccessfulWithOutVerication) {
+                             ;
+                             [self LoginWithZiffi:[NSString stringWithFormat:@"%@",[FBSDKAccessToken currentAccessToken]] withPassword:@"withFacebook" withCompletionHandler:^(NSInteger success) {
+                                 if (success == LoginStatusSuccessfulWithOutVerication) {
                                      callback(LoginStatusSuccessfulWithOutVerication);
                                  }
-                                 else if (success == LoginStatusSuccessfulWithVerication)
-                                 {
+                                 else if (success == LoginStatusSuccessfulWithVerication) {
                                      callback(LoginStatusSuccessfulWithVerication);
                                  }
                                  else {
@@ -119,7 +119,8 @@
                     NSLog(@"Name=%@", person.name.givenName);
                     
                     UserData *objUser = [[UserData alloc]init];
-                    if ([GPPSignIn sharedInstance].authentication.userEmail != NULL || [GPPSignIn sharedInstance].authentication.userEmail != nil) {
+                    if ([GPPSignIn sharedInstance].authentication.userEmail != NULL || [GPPSignIn sharedInstance].authentication.userEmail != nil)
+                    {
                         objUser.user_email = [GPPSignIn sharedInstance].authentication.userEmail;
                     }
                     if (person.name.givenName != NULL || person.name.givenName != nil) {
@@ -142,18 +143,18 @@
                         objUser.user_profilepic = person.image.url;
                     }
 
-                    [self RegisterWithZiffi:objUser.user_email withPassword:objUser.user_facebookid withConfirmPassword:objUser.user_facebookid withFirstname:objUser.user_firstname withGender:objUser.user_gender withPhone:@"" withReferral:@"" withCompletionHandler:^(NSInteger success) {
-                        if (success ==  LoginStatusSuccessfulWithOutVerication) {
+                    [self LoginWithZiffi:[NSString stringWithFormat:@"%@",[GPPSignIn sharedInstance].authentication.accessToken] withPassword:@"withGoogle" withCompletionHandler:^(NSInteger success) {
+                        if (success == LoginStatusSuccessfulWithOutVerication) {
                             callback(LoginStatusSuccessfulWithOutVerication);
                         }
-                        else if (success == LoginStatusSuccessfulWithVerication)
-                        {
+                        else if (success == LoginStatusSuccessfulWithVerication) {
                             callback(LoginStatusSuccessfulWithVerication);
                         }
                         else {
                             callback(LoginStatusFailed);
                         }
                     }];
+                    
                 }
             }];
 }
@@ -163,7 +164,21 @@
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    NSDictionary *parameters = @{@"email" : emailAddress, @"pass" : password};
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc]init];
+    if ([password isEqualToString:@"withGoogle"]) {
+        [parameters setValue:emailAddress forKey:@"access_token"];
+        [parameters setValue:@"google" forKey:@"access_provider"];
+    }
+    else if ([password isEqualToString:@"withFacebook"])
+    {
+        [parameters setValue:emailAddress forKey:@"access_token"];
+        [parameters setValue:@"facebook" forKey:@"access_provider"];
+    }
+    else
+    {
+        [parameters setValue:emailAddress forKey:@"email"];
+        [parameters setValue:password forKey:@"pass"];
+    }
     [manager POST:LOGIN parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         SBJsonParser *parser = [[SBJsonParser alloc] init];
         NSString *feedStr = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
@@ -220,7 +235,19 @@
                 NSString *userSessionId = (NSString *)[jsonObject objectForKey:@"session_id"];
                 objUser.user_session_id= userSessionId;
             }
-            
+         
+            if ([[[jsonObject objectForKey:@"balance"] objectForKey:@"user_wallet_status"] boolValue] == false) {
+                
+                objUser.user_wallet_status = @"0";
+                objUser.user_total_balance = @"0";
+            }
+            else {
+                
+                objUser.user_total_balance = [[[jsonObject objectForKey:@"balance"] objectForKey:@"total_display_balance"]stringValue];
+                objUser.user_ziffi_balance = [[[jsonObject objectForKey:@"balance"] objectForKey:@"ziffi_balance"]stringValue];
+                objUser.user_own_balance = [[[jsonObject objectForKey:@"balance"] objectForKey:@"user_balance"]stringValue];
+                objUser.user_wallet_status = @"1";
+            }
 
             NSMutableArray *temp = [[[jsonObject objectForKey:@"message"] objectForKey:@"user_data"] objectForKey:@"profiles"];
             if ([temp count] > 0) {
@@ -405,8 +432,7 @@ withCompletionHandler:(void (^)(bool success))callback
         NSString *feedStr = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
         NSDictionary *jsonObject = [parser objectWithString:feedStr error:NULL];
         if ([[jsonObject objectForKey:@"is_error"] boolValue] == false) {
-            NSMutableArray *arr = [jsonObject objectForKey:@"message"];
-            [CommonFunctions showWarningAlert:[arr objectAtIndex:1] title:APP_NAME];
+            [CommonFunctions showWarningAlert:[jsonObject objectForKey:@"message"] title:APP_NAME];
             callback(YES);
         }
         else {
@@ -447,6 +473,79 @@ withCompletionHandler:(void (^)(bool success))callback
         [CommonFunctions showWarningAlert:error.description title:APP_NAME];
         [SVProgressHUD dismiss];
         callback(NO);
+    }];
+}
+
+
++(void)DiscountListing:(NSString *)page
+         withSessionId:(NSString *)sessionId
+      withCompletionHandler:(void (^)(NSDictionary *result))callback
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    NSDictionary *parameters = @{@"page" : @"1", @"session_id" : sessionId};
+    [manager POST:DISCOUNTS parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        SBJsonParser *parser = [[SBJsonParser alloc] init];
+        NSString *feedStr = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+        NSDictionary *jsonObject = [parser objectWithString:feedStr error:NULL];
+        if (jsonObject != NULL || jsonObject != nil) {
+            callback(jsonObject);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [CommonFunctions showWarningAlert:error.description title:APP_NAME];
+        [SVProgressHUD dismiss];
+        callback(nil);
+    }];
+}
+
+
++(void)SuggestionListing:(NSString *)vertical
+           withCityId:(NSUInteger )cityid
+           withSearchText:(NSString *)searcxhtext
+         withSessionId:(NSString *)sessionId
+ withCompletionHandler:(void (^)(NSDictionary *result))callback
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    
+    NSDictionary *parameters = @{@"vertical" :vertical,@"city_id" :[NSString stringWithFormat:@"%lu",(unsigned long)cityid],@"str" :searcxhtext, @"session_id" : sessionId};
+    [manager POST:SUGGESTIONQUERY parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        SBJsonParser *parser = [[SBJsonParser alloc] init];
+        NSString *feedStr = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+        NSDictionary *jsonObject = [parser objectWithString:feedStr error:NULL];
+        if (jsonObject != NULL || jsonObject != nil) {
+            callback(jsonObject);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [CommonFunctions showWarningAlert:error.description title:APP_NAME];
+        [SVProgressHUD dismiss];
+        callback(nil);
+    }];
+}
+
+
++(void)SearchListing:(NSString *)vertical
+              withCityId:(NSUInteger )cityid
+          withSearchText:(NSString *)searcxhtext
+      withPageNo:(NSString *)pageno
+           withSessionId:(NSString *)sessionId
+   withCompletionHandler:(void (^)(NSDictionary *result))callback
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    
+    NSDictionary *parameters = @{@"vertical" :vertical,@"city_id" :[NSString stringWithFormat:@"%lu",(unsigned long)cityid],@"q" :searcxhtext, @"page" : pageno,@"session_id" : sessionId};
+    [manager POST:SEARCHQUERY parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        SBJsonParser *parser = [[SBJsonParser alloc] init];
+        NSString *feedStr = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+        NSDictionary *jsonObject = [parser objectWithString:feedStr error:NULL];
+        if (jsonObject != NULL || jsonObject != nil) {
+            callback(jsonObject);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [CommonFunctions showWarningAlert:error.description title:APP_NAME];
+        [SVProgressHUD dismiss];
+        callback(nil);
     }];
 }
 

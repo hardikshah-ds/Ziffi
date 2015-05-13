@@ -27,7 +27,6 @@
 
 -(void)LoadWithInitialValues
 {
-    self.genderSegment.selectedSegmentIndex = 0;
     self.userGender = @"Male";
 }
 
@@ -46,8 +45,8 @@
                 else if (success == LoginStatusSuccessfulWithVerication)
                 {
                     [SVProgressHUD showSuccessWithStatus:@"Register with ziffi successful with verification"];
-                    HomeVC *newView = [self.storyboard instantiateViewControllerWithIdentifier:@"HomeVC"];
-                    [self.navigationController pushViewController:newView animated:YES];
+                    AppDelegate  *appD = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+                    [appD LoadStoryBoardWithMainTabModule];
                 }
                 else {
                     [SVProgressHUD showSuccessWithStatus:@"Error in registration with ziffi"];
@@ -62,12 +61,23 @@
 
 - (IBAction)GenderSelection:(id)sender {
     
-    if (self.genderSegment.selectedSegmentIndex == 0) {
+    if ([sender tag] == 0) {
+        
+        [self.genderMale setBackgroundImage:[UIImage imageNamed:@"male-tap"] forState:UIControlStateNormal];
+        [self.genderFemale setBackgroundImage:[UIImage imageNamed:@"female"] forState:UIControlStateNormal];
         self.userGender = @"Male";
     }
     else {
+        
+        [self.genderFemale setBackgroundImage:[UIImage imageNamed:@"female-tap"] forState:UIControlStateNormal];
+        [self.genderMale setBackgroundImage:[UIImage imageNamed:@"male"] forState:UIControlStateNormal];
         self.userGender = @"Female";
     }
+}
+
+- (IBAction)backPressed:(id)sender {
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(IBAction)LoginWithFacebook:(id)sender
@@ -85,8 +95,8 @@
             }
             else if (success == LoginStatusSuccessfulWithVerication) {
                 [SVProgressHUD showSuccessWithStatus:@"Login with facebook successful with verification"];
-                HomeVC *newView = [self.storyboard instantiateViewControllerWithIdentifier:@"HomeVC"];
-                [self.navigationController pushViewController:newView animated:YES];
+                AppDelegate  *appD = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+                [appD LoadStoryBoardWithMainTabModule];
                 
             }
             else {
@@ -97,6 +107,18 @@
     else {
         [CommonFunctions showWarningAlert:ReachabilityWarning title:APP_NAME];
     }
+}
+
+-(IBAction)LoginWithGoogle:(id)sender
+{
+    
+    GPPSignIn *signIn = [GPPSignIn sharedInstance];
+    signIn.clientID= GOOGLE_ID_DEV;
+    [signIn setScopes:[NSArray arrayWithObject:@"https://www.googleapis.com/auth/plus.login"]];
+    [signIn setDelegate:self];
+    signIn.shouldFetchGoogleUserID=YES;
+    signIn.shouldFetchGoogleUserEmail=YES;
+    [signIn authenticate];
 }
 
 #pragma mark - Login With Google Delegates
@@ -118,16 +140,17 @@
             }
             else if (success == LoginStatusSuccessfulWithVerication) {
                 [SVProgressHUD showSuccessWithStatus:@"Login with google successful with verification"];
-                HomeVC *newView = [self.storyboard instantiateViewControllerWithIdentifier:@"HomeVC"];
-                [self.navigationController pushViewController:newView animated:YES];
+                AppDelegate  *appD = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+                [appD LoadStoryBoardWithMainTabModule];
             }
             else {
-                [SVProgressHUD showSuccessWithStatus:@"Error in Login with google"];
+                //[SVProgressHUD showSuccessWithStatus:@"Error in Login with google"];
             }
             
         }];
     }
 }
+
 
 -(BOOL)FieldValidation {
     
@@ -135,11 +158,11 @@
         
         if ([self.userContactNo.text length] > 0) {
             
-            if ([self.userPassword.text length] > 0) {
+            if ([self.userEmail.text length] > 0 && [CommonFunctions NSStringIsValidEmail:self.userEmail.text]) {
                 
-                if ([self.userRepassword.text length] > 0) {
+                if ([self.userPassword.text length] > 0) {
                     
-                    if ([self.userEmail.text length] > 0 && [CommonFunctions NSStringIsValidEmail:self.userEmail.text]) {
+                    if ([self.userRepassword.text length] > 0) {
                         
                         if ([self.userPassword.text isEqualToString:self.userRepassword.text]) {
                                 return YES;
@@ -151,7 +174,7 @@
                         
                     }
                     else {
-                        [CommonFunctions showWarningAlert:EmailWarning title:APP_NAME];
+                        [CommonFunctions showWarningAlert:PasswordWarning title:APP_NAME];
                         return NO;
                     }
                     
@@ -163,7 +186,7 @@
 
             }
             else {
-                [CommonFunctions showWarningAlert:PasswordWarning title:APP_NAME];
+                [CommonFunctions showWarningAlert:EmailWarning title:APP_NAME];
                 return NO;
             }
             

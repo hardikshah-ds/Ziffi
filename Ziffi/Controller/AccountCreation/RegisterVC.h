@@ -11,11 +11,11 @@
 
 @class GPPSignInButton;
 
-@interface RegisterVC : UIViewController<GPPSignInDelegate>
+@interface RegisterVC : BaseVC <GPPSignInDelegate>
 
 @property (retain, nonatomic) IBOutlet GPPSignInButton *signInButton;
-@property (weak, nonatomic) IBOutlet UIScrollView *backgroundScroll;
-@property (weak, nonatomic) IBOutlet UISegmentedControl *genderSegment;
+@property (weak, nonatomic) IBOutlet UIButton *genderMale;
+@property (weak, nonatomic) IBOutlet UIButton *genderFemale;
 @property (weak, nonatomic) IBOutlet UITextField *userName;
 @property (weak, nonatomic) IBOutlet UITextField *userContactNo;
 @property (weak, nonatomic) IBOutlet UITextField *userEmail;
@@ -27,5 +27,6 @@
 - (IBAction)LoginWithFacebook:(id)sender;
 - (IBAction)RegisterWithZiffi:(id)sender;
 - (IBAction)GenderSelection:(id)sender;
+- (IBAction)backPressed:(id)sender;
 
 @end
