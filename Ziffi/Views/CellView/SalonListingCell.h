@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Constants.h"
+#import "HCSStarRatingView.h"
 
 @interface SalonListingCell : UITableViewCell
 
@@ -16,6 +17,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *salonPrice;
 @property (weak, nonatomic) IBOutlet UILabel *salonAddress;
 @property (weak, nonatomic) IBOutlet UILabel *salonDistance;
+@property (weak, nonatomic) IBOutlet UILabel *salonOffer;
+@property (weak, nonatomic) IBOutlet UIImageView *salonImage;
 @property (weak, nonatomic) IBOutlet UIView *bgView;
+@property (weak, nonatomic) IBOutlet UIImageView *offerView;
+@property (weak, nonatomic) IBOutlet HCSStarRatingView *salonRating;
 
 @end

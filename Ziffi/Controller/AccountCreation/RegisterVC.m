@@ -36,7 +36,7 @@
         if ([self FieldValidation]) {
             
             [SVProgressHUD showWithStatus:@"Loading..."];
-            [WebServices RegisterWithZiffi:self.userEmail.text withPassword:self.userPassword.text withConfirmPassword:self.userRepassword.text  withFirstname:self.userName.text withGender:self.userGender withPhone:self.userContactNo.text withReferral:self.userReferral.text withCompletionHandler:^(NSInteger success) {
+            [LoginModuleServices RegisterWithZiffi:self.userEmail.text withPassword:self.userPassword.text withConfirmPassword:self.userRepassword.text  withFirstname:self.userName.text withGender:self.userGender withPhone:self.userContactNo.text withReferral:self.userReferral.text withCompletionHandler:^(NSInteger success) {
                 if (success == LoginStatusSuccessfulWithOutVerication) {
                     [SVProgressHUD showSuccessWithStatus:@"Register with ziffi successful with out verification"];
                     ProfileVerificationVC *newView = [self.storyboard instantiateViewControllerWithIdentifier:@"profileVerification"];
@@ -86,7 +86,7 @@
         
         
         [SVProgressHUD showWithStatus:@"Loading..."];
-        [WebServices LoginWithFacebook:^(NSInteger success) {
+        [LoginModuleServices LoginWithFacebook:^(NSInteger success) {
             
             if (success == LoginStatusSuccessfulWithOutVerication) {
                 [SVProgressHUD showSuccessWithStatus:@"Login with facebook successful with out verification"];
@@ -132,7 +132,7 @@
     } else {
         
         [SVProgressHUD showWithStatus:@"Loading..."];
-        [WebServices LoginWithGoogle:^(NSInteger success) {
+        [LoginModuleServices LoginWithGoogle:^(NSInteger success) {
             if (success == LoginStatusSuccessfulWithOutVerication) {
                 [SVProgressHUD showSuccessWithStatus:@"Login with google successful with out verification"];
                 ProfileVerificationVC *newView = [self.storyboard instantiateViewControllerWithIdentifier:@"profileVerification"];

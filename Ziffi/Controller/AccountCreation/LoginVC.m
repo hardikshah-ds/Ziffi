@@ -67,7 +67,7 @@
             if ([self.password.text length] > 0) {
                 
                 [SVProgressHUD showWithStatus:@"Loading..."];
-                [WebServices LoginWithZiffi:self.emailAddress.text withPassword:self.password.text withCompletionHandler:^(NSInteger success) {
+                [LoginModuleServices LoginWithZiffi:self.emailAddress.text withPassword:self.password.text withCompletionHandler:^(NSInteger success) {
                     if (success == LoginStatusSuccessfulWithOutVerication) {
                         [SVProgressHUD showSuccessWithStatus:@"Login with ziffi successful with out verification"];
                         ProfileVerificationVC *newView = [self.storyboard instantiateViewControllerWithIdentifier:@"profileVerification"];
@@ -105,7 +105,7 @@
     if ([CommonFunctions isNetworkReachable]) {
 
         [SVProgressHUD showWithStatus:@"Loading..."];
-        [WebServices LoginWithFacebook:^(NSInteger success) {
+        [LoginModuleServices LoginWithFacebook:^(NSInteger success) {
             if (success == LoginStatusSuccessfulWithOutVerication) {
                 [SVProgressHUD showSuccessWithStatus:@"Login with facebook successful with out verification"];
                 ProfileVerificationVC *newView = [self.storyboard instantiateViewControllerWithIdentifier:@"profileVerification"];
@@ -149,7 +149,7 @@
     } else {
         
         [SVProgressHUD showWithStatus:@"Loading..."];
-        [WebServices LoginWithGoogle:^(NSInteger success) {
+        [LoginModuleServices LoginWithGoogle:^(NSInteger success) {
             if (success == LoginStatusSuccessfulWithOutVerication) {
                 [SVProgressHUD showSuccessWithStatus:@"Login with google successful with out verification"];
                 ProfileVerificationVC *newView = [self.storyboard instantiateViewControllerWithIdentifier:@"profileVerification"];

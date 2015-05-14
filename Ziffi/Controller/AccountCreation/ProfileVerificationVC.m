@@ -62,7 +62,7 @@
         if ([self FieldValidation]) {
             
             NSString *sessionid = [[NSUserDefaults standardUserDefaults]valueForKey:@"SessionId"];
-            [WebServices UpdateProfile:self.userEmail.text withName:self.userName.text withContactNo:self.userContactno.text withGender:self.userGender withSessionId:sessionid withCompletionHandler:^(bool success) {
+            [LoginModuleServices UpdateProfile:self.userEmail.text withName:self.userName.text withContactNo:self.userContactno.text withGender:self.userGender withSessionId:sessionid withCompletionHandler:^(bool success) {
                 if (success) {
                     self.updateProfileView.hidden = YES;
                     self.otpView.hidden = NO;
@@ -80,7 +80,7 @@
         if ([self.textOTP.text length] > 0) {
             
             NSString *sessionid = [[NSUserDefaults standardUserDefaults]valueForKey:@"SessionId"];
-            [WebServices UpdateProfileWithOTP:self.textOTP.text withSessionId:sessionid withContactNo:self.userContactno.text withCompletionHandler:^(bool success) {
+            [LoginModuleServices UpdateProfileWithOTP:self.textOTP.text withSessionId:sessionid withContactNo:self.userContactno.text withCompletionHandler:^(bool success) {
                 if (success) {
                     //Redirect to home screen
                     AppDelegate  *appD = (AppDelegate *)[[UIApplication sharedApplication] delegate];

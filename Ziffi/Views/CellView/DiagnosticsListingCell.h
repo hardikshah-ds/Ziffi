@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HCSStarRatingView.h"
 
 @interface DiagnosticsListingCell : UITableViewCell
 
@@ -15,5 +16,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *diagnosticsAddress;
 @property (weak, nonatomic) IBOutlet UILabel *diagnosticsDistance;
 @property (weak, nonatomic) IBOutlet UIView *bgView;
+@property (weak, nonatomic) IBOutlet HCSStarRatingView *diagnosticsRating;
 
 @end

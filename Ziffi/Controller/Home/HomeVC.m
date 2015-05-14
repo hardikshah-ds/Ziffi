@@ -36,7 +36,7 @@
 {
     if ([CommonFunctions isNetworkReachable]) {
         NSString *sessionid = [[NSUserDefaults standardUserDefaults]valueForKey:@"SessionId"];
-        [WebServices DiscountListing:@"1" withSessionId:sessionid withCompletionHandler:^(NSDictionary *result) {
+        [SearchModuleSerivces DiscountListing:@"1" withSessionId:sessionid withCompletionHandler:^(NSDictionary *result) {
             if (result != nil) {
                 self.pagesArray =[result objectForKey:@"discounts"];
                 [self CreateDynamicScrollContent];

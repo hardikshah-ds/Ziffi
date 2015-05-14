@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Constants.h"
 
-@interface WebServices : NSObject
+@interface LoginModuleServices : NSObject
 
 typedef NS_ENUM(NSInteger, LoginStateType) {
     LoginStatusSuccessfulWithVerication,
@@ -70,22 +70,5 @@ withCompletionHandler:(void (^)(bool success))callback;
               withSessionId:(NSString *)sessionId
               withContactNo:(NSString *)contactno
       withCompletionHandler:(void (^)(bool success))callback;
-
-+(void)DiscountListing:(NSString *)page
-         withSessionId:(NSString *)sessionId
- withCompletionHandler:(void (^)(NSDictionary *result))callback;
-
-+(void)SuggestionListing:(NSString *)vertical
-              withCityId:(NSUInteger)cityid
-          withSearchText:(NSString *)searcxhtext
-           withSessionId:(NSString *)sessionId
-   withCompletionHandler:(void (^)(NSDictionary *result))callback;
-
-+(void)SearchListing:(NSString *)vertical
-          withCityId:(NSUInteger )cityid
-      withSearchText:(NSString *)searcxhtext
-          withPageNo:(NSString *)pageno
-       withSessionId:(NSString *)sessionId
-withCompletionHandler:(void (^)(NSDictionary *result))callback;
 
 @end

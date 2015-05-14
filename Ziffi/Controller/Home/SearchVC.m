@@ -14,13 +14,14 @@
 @end
 
 @implementation SearchVC
-@synthesize optionSelected,recentSearchArray,suggestedArray,searchText;
+@synthesize optionSelected,recentSearchArray,suggestedArray,searchText,autocompleteTableView,autocompleteUrls;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.recentSearchArray = [[NSMutableArray alloc]init];
     self.suggestedArray = [[NSMutableArray alloc]init];
+    self.autocompleteUrls = [[NSMutableArray alloc]init];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(backForNavigationPressed:)
                                                  name:@"BackPressed"
@@ -34,6 +35,7 @@
             self.currentLocation.text = currentLocation;
         }
     }];
+
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -42,7 +44,6 @@
     [self.recentSearchArray removeAllObjects];
     [self.suggestedArray removeAllObjects];
     
-    [self.searchText addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     if (optionSelected == 0) {
         
@@ -89,7 +90,7 @@
             vertical = @"diagnostic-centers";
         }
         NSString *sessionid = [[NSUserDefaults standardUserDefaults]valueForKey:@"SessionId"];
-        [WebServices SuggestionListing:vertical withCityId:cityID withSearchText:@"" withSessionId:sessionid withCompletionHandler:^(NSDictionary *result) {
+        [SearchModuleSerivces SuggestionListing:vertical withCityId:cityID withSearchText:@"" withSessionId:sessionid withCompletionHandler:^(NSDictionary *result) {
             
             [SVProgressHUD dismiss];
             if (result !=  NULL || result != nil) {
@@ -117,10 +118,91 @@
     
 }
 
--(void)textFieldDidChange :(UITextField *)theTextField{
-    NSLog( @"text changed: %@", theTextField.text);
+- (void)searchAutocompleteEntriesWithSubstring:(NSString *)substring {
+    
+    // Put anything that starts with this substring into the autocompleteUrls array
+    // The items in this array is what will show up in the table view
+    [autocompleteUrls removeAllObjects];
+    if ([CommonFunctions isNetworkReachable]) {
+        
+        NSUInteger cityID=Mumbai;
+        NSString *vertical = @"salons-spas";
+        if (optionSelected == 0) {
+            vertical = @"salons-spas";
+        }
+        else if (optionSelected == 1) {
+            vertical = @"doctors";
+        }
+        else {
+            vertical = @"diagnostic-centers";
+        }
+        NSString *sessionid = [[NSUserDefaults standardUserDefaults]valueForKey:@"SessionId"];
+        [SearchModuleSerivces SuggestionListing:vertical withCityId:cityID withSearchText:substring withSessionId:sessionid withCompletionHandler:^(NSDictionary *result) {
+            
+            if (result !=  NULL || result != nil) {
+                NSMutableArray *temp =[result objectForKey:@"q"];
+                if ([temp count] > 0) {
+                    for (int i=0; i<[temp count]; i++)
+                    {
+                        NSDictionary *tempDict = [temp objectAtIndex:i];
+                        [self.autocompleteUrls addObject:[tempDict objectForKey:@"term"]];
+                    }
+                }
+                [self.autocompleteTableView reloadData];
+            }
+            else {
+                
+                [self.autocompleteTableView reloadData];
+                [SVProgressHUD dismiss];
+            }
+        }];
+    }
+    else {
+        [self.autocompleteTableView reloadData];
+        [CommonFunctions showWarningAlert:ReachabilityWarning title:APP_NAME];
+    }
 }
 
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    if (textField == self.currentLocation) {
+            autocompleteTableView = [[UITableView alloc] initWithFrame:CGRectMake(self.currentLocation.frame.origin.x, self.currentLocation.frame.origin.y + 60, self.currentLocation.frame.size.width, 150) style:UITableViewStylePlain];
+    }
+    else {
+        autocompleteTableView = [[UITableView alloc] initWithFrame:CGRectMake(self.searchText.frame.origin.x, self.searchText.frame.origin.y + 60, self.searchText.frame.size.width, 150) style:UITableViewStylePlain];
+    }
+    autocompleteTableView.delegate = self;
+    autocompleteTableView.dataSource = self;
+    autocompleteTableView.scrollEnabled = YES;
+    autocompleteTableView.hidden = YES;
+    autocompleteTableView.layer.borderColor = [[UIColor lightGrayColor]CGColor];
+    autocompleteTableView.layer.borderWidth = 1.0f;
+    [self.view addSubview:autocompleteTableView];
+    return YES;
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    autocompleteTableView.hidden = NO;
+    
+    //NSLog(@"search text %@",textField.text);
+    NSString *substring = [NSString stringWithString:textField.text];
+    substring = [substring stringByReplacingCharactersInRange:range withString:string];
+    
+    if ([substring isEqualToString:@""]) {
+        self.autocompleteTableView.hidden = YES;
+    }
+    else {
+        [self searchAutocompleteEntriesWithSubstring:substring];
+    }
+
+    return YES;
+}
+
+- (BOOL)textFieldShouldClear:(UITextField *)textField
+{
+    self.autocompleteTableView.hidden = YES;
+    return YES;
+}
 #pragma mark - Location Update Method
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
     [self.locationManager stopUpdatingLocation];
@@ -181,36 +263,46 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
-    return 2;
+    if (tableView == self.listTableView) {
+        return 2;
+    }
+    else {
+        return 1;
+    }
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    UIView *headerBgView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.listTableView.frame.size.width, 20)];
-    headerBgView.backgroundColor = [CommonFunctions colorWithHexString:GreenColor];
-    
-    UILabel *lbl = [[UILabel alloc]initWithFrame:CGRectMake(5, 0, 200, 22)];
-    lbl.backgroundColor = [UIColor clearColor];
-    
-    if (section == 0) {
-        lbl.text = @"Recent Searches";
+  
+    if (tableView == self.listTableView) {
+        UIView *headerBgView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.listTableView.frame.size.width, 20)];
+        headerBgView.backgroundColor = [CommonFunctions colorWithHexString:GreenColor];
+        
+        UILabel *lbl = [[UILabel alloc]initWithFrame:CGRectMake(5, 0, 200, 22)];
+        lbl.backgroundColor = [UIColor clearColor];
+        
+        if (section == 0) {
+            lbl.text = @"Recent Searches";
+        }
+        else {
+            lbl.text = @"Top Suggestions";
+        }
+        lbl.font = [UIFont fontWithName:FONTREGULAR size:12];
+        lbl.textColor = [UIColor whiteColor];
+        [headerBgView addSubview:lbl];
+        
+        if (section == 0 && self.recentSearchArray.count >0) {
+            UIButton *btnDelete = [UIButton buttonWithType:UIButtonTypeCustom];
+            btnDelete.frame = CGRectMake(headerBgView.frame.size.width - 20, 0, 12, 22);
+            [btnDelete setImage:[UIImage imageNamed:@"delete-search"] forState:UIControlStateNormal];
+            [btnDelete addTarget:self action:@selector(deleTeRecentSearches:) forControlEvents:UIControlEventTouchUpInside];
+            [headerBgView addSubview:btnDelete];
+        }
+        return headerBgView;
     }
     else {
-        lbl.text = @"Top Suggestions";
+        return nil;
     }
-    lbl.font = [UIFont fontWithName:FONTREGULAR size:12];
-    lbl.textColor = [UIColor whiteColor];
-    [headerBgView addSubview:lbl];
-    
-    if (section == 0 && self.recentSearchArray.count >0) {
-        UIButton *btnDelete = [UIButton buttonWithType:UIButtonTypeCustom];
-        btnDelete.frame = CGRectMake(headerBgView.frame.size.width - 20, 0, 12, 22);
-        [btnDelete setImage:[UIImage imageNamed:@"delete-search"] forState:UIControlStateNormal];
-        [btnDelete addTarget:self action:@selector(deleTeRecentSearches:) forControlEvents:UIControlEventTouchUpInside];
-        [headerBgView addSubview:btnDelete];
-    }
-    
-    return headerBgView;
 }
 
 -(void)deleTeRecentSearches:(id)sender
@@ -243,48 +335,74 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-    if (section == 0) {
-        return self.recentSearchArray.count;
+    if (tableView == self.listTableView) {
+        if (section == 0) {
+            return self.recentSearchArray.count;
+        }
+        else {
+            return self.suggestedArray.count;
+        }
     }
     else {
-        return self.suggestedArray.count;
+        return autocompleteUrls.count;
     }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    
     
     UITableViewCell *cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
     if (cell == nil) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     }
     
-    cell.backgroundColor = [UIColor whiteColor];
-    if (indexPath.section == 0) {
-        cell.textLabel.text = [self.recentSearchArray objectAtIndex:indexPath.row];
+    if (tableView ==self.listTableView) {
+        cell.backgroundColor = [UIColor whiteColor];
+        if (indexPath.section == 0) {
+            cell.textLabel.text = [self.recentSearchArray objectAtIndex:indexPath.row];
+        }
+        else {
+            cell.textLabel.text = [self.suggestedArray objectAtIndex:indexPath.row];
+            
+        }
+        tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+        cell.textLabel.font = [UIFont fontWithName:FONTLIGHT size:12];
+        cell.textLabel.textColor = [UIColor grayColor];
     }
     else {
-        cell.textLabel.text = [self.suggestedArray objectAtIndex:indexPath.row];
-        
+        cell.textLabel.text = [autocompleteUrls objectAtIndex:indexPath.row];
+        cell.textLabel.font = [UIFont fontWithName:FONTLIGHT size:12];
+        cell.textLabel.textColor = [UIColor grayColor];
     }
-    tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-    cell.textLabel.font = [UIFont fontWithName:FONTLIGHT size:12];
-    cell.textLabel.textColor = [UIColor grayColor];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+
     ListingVC *newView = [self.storyboard instantiateViewControllerWithIdentifier:@"ListingVC"];
     newView.optionSelected = optionSelected;
-    if (indexPath.section == 0) {
-        newView.searchText = [self.recentSearchArray objectAtIndex:indexPath.row];
+    if (tableView == self.listTableView) {
+        if (indexPath.section == 0) {
+            newView.searchText = [self.recentSearchArray objectAtIndex:indexPath.row];
+        }
+        else {
+            newView.searchText = [self.suggestedArray objectAtIndex:indexPath.row];
+            
+        }
     }
-    else {
-        newView.searchText = [self.suggestedArray objectAtIndex:indexPath.row];
-        
+    else{
+        UITableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
+        newView.searchText = selectedCell.textLabel.text;
     }
+
     [self.navigationController pushViewController:newView animated:YES];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 30;
 }
 
 @end

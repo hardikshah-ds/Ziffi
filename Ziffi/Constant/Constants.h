@@ -13,12 +13,15 @@
 #import <CoreLocation/CoreLocation.h>
 #import "AFNetworking.h"
 #import "AFNetworkReachabilityManager.h"
+#import "UIImageView+AFNetworking.h"
 #import "SBJson.h"
 
 #import "CommonFunctions.h"
 #import "UserData.h"
-#import "WebServices.h"
+#import "LoginModuleServices.h"
+#import "SearchModuleSerivces.h"
 #import "SVProgressHUD.h"
+#import "TablePagination.h"
 
 #import "AppDelegate.h"
 
@@ -33,6 +36,10 @@
 #import "TopWalletBar.h"
 #import "DoctorListingCell.h"
 #import "DiagnosticsListingCell.h"
+#import "SalonListingData.h"
+#import "DoctorsLisitingData.h"
+#import "DiagnosticsListingData.h"
+#import "VerticalListingServices.h"
 
 #ifndef Ziffi_Constants_h
 #define Ziffi_Constants_h
@@ -91,6 +98,7 @@
 #define VERIFY_PROFILE_OTP                  [kAPIEndpointHost stringByAppendingString:@"account/verify"]
 #define DISCOUNTS                                [kAPIEndpointHost stringByAppendingString:@"discounts/listing"]
 #define SUGGESTIONQUERY                                [kAPIEndpointHost stringByAppendingString:@"search/suggestions/q"]
+#define LOCATIONSUGGESTIONQUERY                                [kAPIEndpointHost stringByAppendingString:@"search/suggestions/location"]
 #define SEARCHQUERY                                [kAPIEndpointHost stringByAppendingString:@"search/"]
 
 #endif

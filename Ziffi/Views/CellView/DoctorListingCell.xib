@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -13,6 +12,7 @@
             <string>Roboto-Light</string>
         </mutableArray>
         <mutableArray key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
             <string>Roboto-Regular</string>
             <string>Roboto-Regular</string>
             <string>Roboto-Regular</string>
@@ -96,24 +96,31 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dermatology (Skin), Cosmetology" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="0O4-YN-UKh">
-                            <rect key="frame" x="8" y="103" width="191" height="21"/>
+                            <rect key="frame" x="8" y="101" width="191" height="21"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="12"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lifiline Multispeciality Hospotal, Malad West Visiti 2 more hospitals" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wlu-0a-NLY">
-                            <rect key="frame" x="8" y="121" width="200" height="40"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dermatology (Skin), Cosmetology" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="nyx-fY-00Y">
+                            <rect key="frame" x="8" y="118" width="231" height="21"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="11"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9.2 Kms" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="c3I-wO-Nsb">
-                            <rect key="frame" x="224" y="135" width="65" height="21"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9.2 Kms" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" id="c3I-wO-Nsb">
+                            <rect key="frame" x="224" y="130" width="65" height="21"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dermatology (Skin), Cosmetology" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="c8O-nv-MHk">
+                            <rect key="frame" x="8" y="135" width="208" height="21"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="11"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
@@ -138,15 +145,17 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="bgView" destination="nbj-yg-eLa" id="bJe-WG-4yG"/>
-                <outlet property="doctorAddress" destination="wlu-0a-NLY" id="cyT-Bk-w13"/>
                 <outlet property="doctorDegree" destination="GFl-j7-yzv" id="wVu-eU-rp0"/>
                 <outlet property="doctorDistance" destination="c3I-wO-Nsb" id="NI4-JX-Nyz"/>
                 <outlet property="doctorExp" destination="9Yd-lm-dnK" id="f5Q-8P-eth"/>
                 <outlet property="doctorFees" destination="Id9-VZ-eSF" id="gU8-FK-1gB"/>
+                <outlet property="doctorHospitals" destination="nyx-fY-00Y" id="9N7-wQ-yeU"/>
                 <outlet property="doctorImage" destination="k5v-ds-uhg" id="ejH-tq-ffq"/>
                 <outlet property="doctorName" destination="KIC-CE-yz6" id="3zC-vf-Hos"/>
                 <outlet property="doctorReviews" destination="wry-AK-e10" id="4Uw-wB-ZHP"/>
                 <outlet property="doctorSpeciality" destination="0O4-YN-UKh" id="aDt-oZ-sSE"/>
+                <outlet property="doctorWorkingAt" destination="c8O-nv-MHk" id="As1-ue-rUv"/>
+                <outlet property="doctorsRating" destination="ULu-He-mjc" id="XU5-IT-pAI"/>
             </connections>
             <point key="canvasLocation" x="283" y="221.5"/>
         </view>

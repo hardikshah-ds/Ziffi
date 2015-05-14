@@ -8,11 +8,18 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseVC.h"
+#import "TablePagination.h"
+#import "VerticalListingServices.h"
 
-@interface ListingVC : BaseVC
+@interface ListingVC : BaseVC <ZiffiPaginationDelegate, UIScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *listingTable;
 @property (nonatomic, strong) IBOutlet UITextField *searchTextField;
+
+@property (nonatomic, strong) UILabel *footerLabel;
+@property (nonatomic, strong) UIActivityIndicatorView *activityIndicator;
+@property (nonatomic, strong) VerticalListingServices *verticalListingServices;
+
 @property (strong, nonatomic) NSString *searchText;
 @property (nonatomic) NSUInteger optionSelected;
 

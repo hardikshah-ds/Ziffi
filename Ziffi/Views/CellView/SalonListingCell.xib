@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -33,6 +32,11 @@
                             <rect key="frame" x="0.0" y="0.0" width="295" height="128"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         </imageView>
+                        <imageView userInteractionEnabled="NO" alpha="0.59999999999999964" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="OlJ-9k-BlM">
+                            <rect key="frame" x="0.0" y="0.0" width="295" height="128"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.047058823530000002" green="0.1333333333" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unisex" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7CY-LV-IEX">
                             <rect key="frame" x="8" y="4" width="75" height="17"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -47,8 +51,8 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Evershine Helley Towers Paradise, Kandivali West" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Hph-49-Wbq">
-                            <rect key="frame" x="8" y="156" width="203" height="40"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Evershine Helley Towers Paradise, Kandivali West" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" id="Hph-49-Wbq">
+                            <rect key="frame" x="8" y="154" width="194" height="40"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="11"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -61,8 +65,8 @@
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9.2 Kms" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rOa-BK-BvK">
-                            <rect key="frame" x="222" y="170" width="65" height="21"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9.2 Kms" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" id="rOa-BK-BvK">
+                            <rect key="frame" x="219" y="160" width="68" height="21"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -86,6 +90,7 @@
                                 <userDefinedRuntimeAttribute type="number" keyPath="spacing">
                                     <real key="value" value="10"/>
                                 </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="allowsHalfStars" value="YES"/>
                             </userDefinedRuntimeAttributes>
                         </view>
                     </subviews>
@@ -120,10 +125,14 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="bgView" destination="ESh-Et-u6A" id="ghw-BN-SgP"/>
+                <outlet property="offerView" destination="dal-TL-XyR" id="Ciq-Mh-fi9"/>
                 <outlet property="salonAddress" destination="Hph-49-Wbq" id="G8l-4D-Ddi"/>
                 <outlet property="salonDistance" destination="rOa-BK-BvK" id="93c-dt-ziQ"/>
+                <outlet property="salonImage" destination="QOo-EZ-nPU" id="3uT-zU-cW3"/>
                 <outlet property="salonName" destination="Gi5-c6-aFF" id="euH-Ic-FTo"/>
+                <outlet property="salonOffer" destination="QSI-jo-Dpl" id="2gp-Ca-6BS"/>
                 <outlet property="salonPrice" destination="tXb-TF-Das" id="Urx-1u-6qg"/>
+                <outlet property="salonRating" destination="8Av-Ft-Cc1" id="c3i-jY-DTi"/>
                 <outlet property="salonType" destination="7CY-LV-IEX" id="G8l-yl-6iy"/>
             </connections>
             <point key="canvasLocation" x="200" y="311.5"/>

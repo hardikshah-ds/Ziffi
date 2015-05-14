@@ -77,7 +77,7 @@
         
         if ([self.resetWithText.text length] > 0) {
             [SVProgressHUD showWithStatus:@"Loading..."];
-            [WebServices ForgetPassword:self.resetWithText.text withCompletionHandler:^(NSInteger success) {
+            [LoginModuleServices ForgetPassword:self.resetWithText.text withCompletionHandler:^(NSInteger success) {
                 
                 [self.resetWithText resignFirstResponder];
                 if (success == ResultWithIsEmailTrue) {
@@ -118,7 +118,7 @@
             
             
             NSString *userid = [[NSUserDefaults standardUserDefaults]valueForKey:@"UserId"];
-            [WebServices VerifyPasswordWithOTP:self.textOTP.text withPass1:self.setNewPassword.text withPass2:self.confirmNewPassword.text withUserid:userid withCompletionHandler:^(NSInteger success) {
+            [LoginModuleServices VerifyPasswordWithOTP:self.textOTP.text withPass1:self.setNewPassword.text withPass2:self.confirmNewPassword.text withUserid:userid withCompletionHandler:^(NSInteger success) {
                 if (success == ResultStatusSuccess) {
                     //Rerdirect to Login page
                     [self.navigationController popToRootViewControllerAnimated:YES];

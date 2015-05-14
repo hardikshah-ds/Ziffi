@@ -13,6 +13,13 @@
 - (void)awakeFromNib {
     // Initialization code
     
+//    self.myrateView = [[HCSStarRatingView alloc] initWithFrame:CGRectMake(50, 200, 200, 50)];
+//    self.myrateView.maximumValue = 5;
+//    self.myrateView.minimumValue = 0;
+//    self.myrateView.value = 0;
+//    self.myrateView.tintColor = [UIColor whiteColor];
+//    [self addSubview:self.myrateView];
+    
     [self.bgView.layer setCornerRadius:0.0f];
     [self.bgView.layer setBorderColor:[UIColor lightGrayColor].CGColor];
     [self.bgView.layer setBorderWidth:0.5f];

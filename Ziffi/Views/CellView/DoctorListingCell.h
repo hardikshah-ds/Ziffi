@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HCSStarRatingView.h"
 
 @interface DoctorListingCell : UITableViewCell
 
@@ -17,8 +18,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *doctorDistance;
 @property (weak, nonatomic) IBOutlet UILabel *doctorReviews;
 @property (weak, nonatomic) IBOutlet UILabel *doctorSpeciality;
-@property (weak, nonatomic) IBOutlet UILabel *doctorAddress;
+@property (weak, nonatomic) IBOutlet UILabel *doctorHospitals;
+@property (weak, nonatomic) IBOutlet UILabel *doctorWorkingAt;
 @property (weak, nonatomic) IBOutlet UIImageView *doctorImage;
 @property (weak, nonatomic) IBOutlet UIView *bgView;
+@property (weak, nonatomic) IBOutlet HCSStarRatingView *doctorsRating;
 
 @end

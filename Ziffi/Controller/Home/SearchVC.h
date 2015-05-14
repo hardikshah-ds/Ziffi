@@ -9,14 +9,17 @@
 #import <UIKit/UIKit.h>
 #import "BaseVC.h"
 
-@interface SearchVC : BaseVC
+@interface SearchVC : BaseVC <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) IBOutlet UITextField *currentLocation;
 @property (nonatomic, strong) IBOutlet UITextField *searchText;
 @property (nonatomic, strong) IBOutlet UITableView *listTableView;
-
+@property (nonatomic, strong) UITableView *autocompleteTableView;
 @property (nonatomic, strong) NSMutableArray *recentSearchArray;
 @property (nonatomic, strong) NSMutableArray *suggestedArray;
+@property (nonatomic, retain) NSMutableArray *autocompleteUrls;
 @property (nonatomic) NSUInteger optionSelected;
+
+- (void)searchAutocompleteEntriesWithSubstring:(NSString *)substring;
 
 @end
