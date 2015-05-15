@@ -7,6 +7,7 @@
 //
 
 #import "ReferVC.h"
+#import "Constants.h"
 
 @interface ReferVC ()
 
@@ -16,27 +17,33 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    UserData *object = [CommonFunctions retriveCompleteUserData];
+    self.friendsGet.text = [NSString stringWithFormat:@"Friends get \u20B9 %@",object.user_referral_amount];
+    self.youGet.text = [NSString stringWithFormat:@"Friends signs up, you get \u20B9 %@",object.user_referral_amount];
+    self.shareCode.text = [NSString stringWithFormat:@"Share your refferal code: %@",object.user_referral_code];
     // Do any additional setup after loading the view.
 }
-
-//-(void)viewWillAppear:(BOOL)animated
-//{
-//    [[UIView appearanceWhenContainedIn:[UITabBar class], nil] setTintColor:[UIColor whiteColor]];
-//    [[UITabBarItem appearance] setTitleTextAttributes:@{NSFontAttributeName : [UIFont fontWithName:@"Roboto-Bold" size:10.0f],
-//                                                        NSForegroundColorAttributeName : [UIColor whiteColor]
-//                                                        } forState:UIControlStateNormal];
-//    
-//    [[UITabBar appearance] setSelectedImageTintColor:[UIColor colorWithRed:10/255.0f green:180/255.0f blue:180/255.0f alpha:1.0]];
-//    [[UITabBarItem appearance] setTitleTextAttributes:@{NSFontAttributeName : [UIFont fontWithName:@"Roboto-Bold" size:10.0f],
-//                                                        NSForegroundColorAttributeName : [UIColor colorWithRed:10/255.0f green:180/255.0f blue:180/255.0f alpha:1.0]
-//                                                        } forState:UIControlStateSelected];
-//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
+-(IBAction)ViewEarning:(id)sender
+{
+    
+}
+
+-(IBAction)ShareitPressed:(id)sender
+{
+    UserData *object = [CommonFunctions retriveCompleteUserData];
+    NSString *textToShare = [NSString stringWithFormat:@"Loving the Ziffi app right now, you should totally try it. Use my refferal code %@ and enjoy your first service free. Get the app here: bit.ly/Ziffi",object.user_referral_code];
+    //UIImage *imageToShare = [UIImage imageNamed:@"AppIcon"];
+    NSArray *itemsToShare = @[textToShare];
+    UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:itemsToShare applicationActivities:nil];
+    activityVC.excludedActivityTypes = @[UIActivityTypePrint, UIActivityTypeCopyToPasteboard, UIActivityTypeAssignToContact, UIActivityTypeSaveToCameraRoll]; //or whichever you don't need
+    [self presentViewController:activityVC animated:YES completion:nil];
+}
 /*
 #pragma mark - Navigation
 

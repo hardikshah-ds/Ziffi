@@ -13,6 +13,9 @@
 		564446721AFC8CB200E04E0D /* BookingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 564446711AFC8CB200E04E0D /* BookingVC.m */; };
 		5644467A1AFC919200E04E0D /* MainTab.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 564446791AFC919200E04E0D /* MainTab.storyboard */; };
 		566D65BA1B05DA8600A96111 /* SalonDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 566D65B91B05DA8600A96111 /* SalonDetailsVC.m */; };
+		566D65BC1B06184000A96111 /* AppIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 566D65BB1B06184000A96111 /* AppIcon.png */; };
+		566D65BF1B06318900A96111 /* OfferListingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 566D65BE1B06318900A96111 /* OfferListingCell.m */; };
+		566D65C31B0631C000A96111 /* OfferListingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 566D65C21B0631C000A96111 /* OfferListingCell.xib */; };
 		568DA8531AF8E8230033C255 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 568DA8521AF8E8230033C255 /* main.m */; };
 		568DA8561AF8E8230033C255 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 568DA8551AF8E8230033C255 /* AppDelegate.m */; };
 		568DA85C1AF8E8230033C255 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 568DA85A1AF8E8230033C255 /* Main.storyboard */; };
@@ -125,6 +128,10 @@
 		564446791AFC919200E04E0D /* MainTab.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainTab.storyboard; sourceTree = "<group>"; };
 		566D65B81B05DA8600A96111 /* SalonDetailsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SalonDetailsVC.h; sourceTree = "<group>"; };
 		566D65B91B05DA8600A96111 /* SalonDetailsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SalonDetailsVC.m; sourceTree = "<group>"; };
+		566D65BB1B06184000A96111 /* AppIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon.png; sourceTree = "<group>"; };
+		566D65BD1B06318900A96111 /* OfferListingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OfferListingCell.h; sourceTree = "<group>"; };
+		566D65BE1B06318900A96111 /* OfferListingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OfferListingCell.m; sourceTree = "<group>"; };
+		566D65C21B0631C000A96111 /* OfferListingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OfferListingCell.xib; sourceTree = "<group>"; };
 		568DA84D1AF8E8230033C255 /* Ziffi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ziffi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		568DA8511AF8E8230033C255 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		568DA8521AF8E8230033C255 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -392,6 +399,7 @@
 		568DA8501AF8E8230033C255 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				566D65BB1B06184000A96111 /* AppIcon.png */,
 				56EA20C21AFCE8E8001B1E91 /* AppFont */,
 				568DA8AB1AF9DD970033C255 /* SupportedLibraries */,
 				568DA8511AF8E8230033C255 /* Info.plist */,
@@ -694,6 +702,9 @@
 				56B1AA681B04878500F8037F /* SalonListingCell.h */,
 				56B1AA691B04878500F8037F /* SalonListingCell.m */,
 				56B1AA6A1B04878500F8037F /* SalonListingCell.xib */,
+				566D65BD1B06318900A96111 /* OfferListingCell.h */,
+				566D65BE1B06318900A96111 /* OfferListingCell.m */,
+				566D65C21B0631C000A96111 /* OfferListingCell.xib */,
 			);
 			path = CellView;
 			sourceTree = "<group>";
@@ -804,6 +815,7 @@
 				TargetAttributes = {
 					568DA84C1AF8E8230033C255 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = V6VXKGPU5U;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -840,6 +852,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				566D65BC1B06184000A96111 /* AppIcon.png in Resources */,
 				56EA20C71AFCE8E8001B1E91 /* Roboto-Bold.ttf in Resources */,
 				568DA9391AF9F5DE0033C255 /* SVProgressHUD.bundle in Resources */,
 				56EA20CA1AFCE8E8001B1E91 /* Roboto-Regular.ttf in Resources */,
@@ -852,6 +865,7 @@
 				56B1AA731B04878500F8037F /* DiagnosticsListingCell.xib in Resources */,
 				568DA85E1AF8E8230033C255 /* Images.xcassets in Resources */,
 				56EA20C91AFCE8E8001B1E91 /* Roboto-Medium.ttf in Resources */,
+				566D65C31B0631C000A96111 /* OfferListingCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -898,6 +912,7 @@
 				568DA94B1AFA4EC20033C255 /* HomeVC.m in Sources */,
 				5644466F1AFC8CA100E04E0D /* ReferVC.m in Sources */,
 				568DA9221AF9EAA10033C255 /* SBJsonStreamParserAccumulator.m in Sources */,
+				566D65BF1B06318900A96111 /* OfferListingCell.m in Sources */,
 				568DA8531AF8E8230033C255 /* main.m in Sources */,
 				56B1AA5A1B04861800F8037F /* SalonListingData.m in Sources */,
 				568DA9281AF9EAA10033C255 /* SBJsonTokeniser.m in Sources */,
@@ -1008,7 +1023,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "73cc7ddb-d575-4399-8212-4a976ef80154";
+				PROVISIONING_PROFILE = "ef479af2-517e-41c8-bbe4-ec3127bc9952";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1046,7 +1061,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "8be3dbfb-03a1-492a-b845-86abac2e5490";
+				PROVISIONING_PROFILE = "69887dbb-87e9-4e34-8333-6579cc869550";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1057,6 +1072,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jayman Pandya (Q68Y5ZG3L5)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/hardik/Documents/FacebookSDK,
@@ -1068,7 +1084,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "73cc7ddb-d575-4399-8212-4a976ef80154";
+				PROVISIONING_PROFILE = "ef479af2-517e-41c8-bbe4-ec3127bc9952";
 			};
 			name = Debug;
 		};
@@ -1077,6 +1093,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Jayman Pandya (V6VXKGPU5U)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/hardik/Documents/FacebookSDK,
@@ -1088,7 +1105,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8be3dbfb-03a1-492a-b845-86abac2e5490";
+				PROVISIONING_PROFILE = "69887dbb-87e9-4e34-8333-6579cc869550";
 			};
 			name = Release;
 		};
@@ -1107,6 +1124,7 @@
 				INFOPLIST_FILE = ZiffiTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "ef479af2-517e-41c8-bbe4-ec3127bc9952";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Ziffi.app/Ziffi";
 			};
 			name = Debug;
@@ -1122,6 +1140,7 @@
 				INFOPLIST_FILE = ZiffiTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "69887dbb-87e9-4e34-8333-6579cc869550";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Ziffi.app/Ziffi";
 			};
 			name = Release;

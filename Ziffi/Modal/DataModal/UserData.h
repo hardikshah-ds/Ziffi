@@ -29,5 +29,7 @@
 @property (nonatomic, strong) NSString *user_ziffi_balance;
 @property (nonatomic, strong) NSString *user_own_balance;
 @property (nonatomic, strong) NSString *user_wallet_status;
+@property (nonatomic, strong) NSString *user_referral_code;
+@property (nonatomic, strong) NSString *user_referral_amount;
 
 @end

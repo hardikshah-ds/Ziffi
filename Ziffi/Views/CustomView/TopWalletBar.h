@@ -9,5 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface TopWalletBar : UIView
+
+@property (nonatomic,strong) UIButton *backButton;
+
 -(void)popNavigation:(id)sender;
+-(void)ShowBackButton;
 @end

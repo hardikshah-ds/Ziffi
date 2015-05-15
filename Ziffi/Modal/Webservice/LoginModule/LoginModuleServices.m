@@ -249,6 +249,14 @@
                 objUser.user_wallet_status = @"1";
             }
 
+            if ([[[[jsonObject objectForKey:@"message"] objectForKey:@"user_data"] objectForKey:@"referral_details"] objectForKey:@"coupon_code"]!= [NSNull null]) {
+                objUser.user_referral_code =[[[[jsonObject objectForKey:@"message"] objectForKey:@"user_data"] objectForKey:@"referral_details"] objectForKey:@"coupon_code"];
+            }
+            
+            if ([[[[jsonObject objectForKey:@"message"] objectForKey:@"user_data"] objectForKey:@"referral_details"] objectForKey:@"value"]!= [NSNull null]) {
+                objUser.user_referral_amount =[[[[jsonObject objectForKey:@"message"] objectForKey:@"user_data"] objectForKey:@"referral_details"] objectForKey:@"value"];
+            }
+            
             NSMutableArray *temp = [[[jsonObject objectForKey:@"message"] objectForKey:@"user_data"] objectForKey:@"profiles"];
             if ([temp count] > 0) {
                 
@@ -456,7 +464,7 @@ withCompletionHandler:(void (^)(bool success))callback
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    NSDictionary *parameters = @{@"verification-code" : textOTP,@"profile-phone":contactno, @"session_id" : sessionId};
+    NSDictionary *parameters = @{@"verification-code" : textOTP,@"profile-phone":contactno,@"verify":@"Verify",@"session_id" : sessionId};
     [manager POST:VERIFY_PROFILE_OTP parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         SBJsonParser *parser = [[SBJsonParser alloc] init];
         NSString *feedStr = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];

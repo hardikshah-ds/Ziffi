@@ -20,7 +20,7 @@
     NSDictionary *parameters = @{@"vertical" :[dict objectForKey:@"vertical"],@"city_id" :[NSString stringWithFormat:@"%ld",(long)[[dict objectForKey:@"cityid"]integerValue]],@"q" :[dict objectForKey:@"q"], @"page" : [NSString stringWithFormat:@"%lu",(unsigned long)page],@"session_id" : [dict objectForKey:@"sessionid"]
                                  ,@"coordinates" : [dict objectForKey:@"coordinates"]
                                  ,@"location" : [dict objectForKey:@"location"]};
-    [manager POST:SEARCHQUERY parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager POST:@"http://www.ziffi.com/api/search/" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         SBJsonParser *parser = [[SBJsonParser alloc] init];
         NSString *feedStr = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
         NSDictionary *jsonObject = [parser objectWithString:feedStr error:NULL];

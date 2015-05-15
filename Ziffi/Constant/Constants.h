@@ -60,6 +60,8 @@
 #define FACEBOOK_ID_DEV @"838403506246406"
 #define GOOGLE_ID_PRO @"AIzaSyBi_CbFLs4_JuEtbdaxyNswjPepB0L-mb0"
 #define GOOGLE_ID_DEV @"988738071539-ob6669vrbt73hul2pgrket8pu9n4ip8g.apps.googleusercontent.com"
+#define PHONENO @"+91989565478"
+#define ITUNESURL @"http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=291170459&mt=8"
 
 #define APP_NAME @"Ziffi - Custormer App"
 

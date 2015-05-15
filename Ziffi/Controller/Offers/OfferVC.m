@@ -7,6 +7,8 @@
 //
 
 #import "OfferVC.h"
+#import "OfferListingCell.h"
+#import "Constants.h"
 
 @interface OfferVC ()
 
@@ -16,35 +18,58 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self GetDiscounts];
     // Do any additional setup after loading the view.
 }
 
-//-(void)viewWillAppear:(BOOL)animated
-//{
-//    [[UIView appearanceWhenContainedIn:[UITabBar class], nil] setTintColor:[UIColor whiteColor]];
-//    [[UITabBarItem appearance] setTitleTextAttributes:@{NSFontAttributeName : [UIFont fontWithName:@"Roboto-Bold" size:10.0f],
-//                                                        NSForegroundColorAttributeName : [UIColor whiteColor]
-//                                                        } forState:UIControlStateNormal];
-//    
-//    [[UITabBar appearance] setSelectedImageTintColor:[UIColor colorWithRed:10/255.0f green:180/255.0f blue:180/255.0f alpha:1.0]];
-//    [[UITabBarItem appearance] setTitleTextAttributes:@{NSFontAttributeName : [UIFont fontWithName:@"Roboto-Bold" size:10.0f],
-//                                                        NSForegroundColorAttributeName : [UIColor colorWithRed:10/255.0f green:180/255.0f blue:180/255.0f alpha:1.0]
-//                                                        } forState:UIControlStateSelected];
-//}
+-(void)GetDiscounts
+{
+    if ([CommonFunctions isNetworkReachable]) {
+        
+        [SVProgressHUD showWithStatus:@"Loading..."];
+        NSString *sessionid = [[NSUserDefaults standardUserDefaults]valueForKey:@"SessionId"];
+        [SearchModuleSerivces DiscountListing:@"1" withSessionId:sessionid withCompletionHandler:^(NSDictionary *result) {
+            if (result != nil) {
+                
+                [SVProgressHUD dismiss];
+                self.pagesArray =[result objectForKey:@"discounts"];
+                [self.offerTableView reloadData];
+            }
+        }];
+    }
+    else {
+        [CommonFunctions showWarningAlert:ReachabilityWarning title:APP_NAME];
+    }
+}
+
+
+#pragma mark - TextField Delegate Method
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+
+    return self.pagesArray.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    OfferListingCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    if (!cell) {
+        [tableView registerNib:[UINib nibWithNibName:@"OfferListingCell" bundle:nil] forCellReuseIdentifier:@"cell"];
+        cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    }
+    
+    NSDictionary *tempDict = [self.pagesArray objectAtIndex:indexPath.row];
+    cell.offerText.text = [tempDict objectForKey:@"title"];
+    cell.offerPrice.text = [NSString stringWithFormat:@"%@",[tempDict objectForKey:@"value"]];
+    cell.offerCode.text = [tempDict objectForKey:@"code"];
+    cell.backgroundColor = [UIColor clearColor];
+    return cell;
+
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

@@ -11,13 +11,15 @@
 #import "CommonFunctions.h"
 
 @implementation TopWalletBar
+@synthesize backButton;
 
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect {
     // Drawing code
-    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    backButton = [UIButton buttonWithType:UIButtonTypeCustom];
     backButton.frame = CGRectMake(self.frame.origin.x + 5, self.frame.origin.y + 3, 20, 40);
+    backButton.tag = 123;
     [backButton setImage:[UIImage imageNamed:@"black-back-arrow"] forState:UIControlStateNormal];
     [backButton addTarget:self action:@selector(popNavigation:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:backButton];
@@ -44,5 +46,9 @@
      object:self];
 }
 
+-(void)ShowBackButton
+{
+    backButton.hidden = YES;
+}
 
 @end

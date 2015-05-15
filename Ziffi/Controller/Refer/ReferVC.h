@@ -10,4 +10,8 @@
 
 @interface ReferVC : UIViewController
 
+@property (nonatomic, strong) IBOutlet UILabel *friendsGet;
+@property (nonatomic, strong) IBOutlet UILabel *youGet;
+@property (nonatomic, strong) IBOutlet UILabel *shareCode;
+
 @end

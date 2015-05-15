@@ -33,6 +33,8 @@
         self.user_own_balance = @"";
         self.user_total_balance = @"";
         self.user_wallet_status = @"";
+        self.user_referral_code = @"";
+        self.user_referral_amount = @"";
     }
     return self;
 }
@@ -59,6 +61,8 @@
         self.user_own_balance = [decoder decodeObjectForKey:@"user_own_balance"];
         self.user_total_balance = [decoder decodeObjectForKey:@"user_total_balance"];
         self.user_wallet_status = [decoder decodeObjectForKey:@"user_wallet_status"];
+        self.user_referral_amount = [decoder decodeObjectForKey:@"user_referral_amount"];
+        self.user_referral_code = [decoder decodeObjectForKey:@"user_referral_code"];
     }
     return self;
 }
@@ -83,6 +87,8 @@
     [encoder encodeObject:self.user_own_balance forKey:@"user_own_balance"];
     [encoder encodeObject:self.user_total_balance forKey:@"user_total_balance"];
     [encoder encodeObject:self.user_wallet_status forKey:@"user_wallet_status"];
+    [encoder encodeObject:self.user_referral_amount forKey:@"user_referral_amount"];
+    [encoder encodeObject:self.user_referral_code forKey:@"user_referral_code"];
 }
 
 

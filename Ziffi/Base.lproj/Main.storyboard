@@ -238,7 +238,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="dwe-V0-CMS">
-                                        <rect key="frame" x="160" y="139" width="147" height="27"/>
+                                        <rect key="frame" x="159.99999988403448" y="139" width="147" height="27"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <state key="normal" backgroundImage="female">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -391,10 +391,10 @@
                             </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="jxZ-Qp-pTM" customClass="TPKeyboardAvoidingScrollView">
                                 <rect key="frame" x="-1" y="96" width="321" height="304"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" id="0J7-je-Es3">
-                                        <rect key="frame" x="11" y="50" width="299" height="154"/>
+                                        <rect key="frame" x="11" y="15" width="299" height="154"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please wait by the time your OTP sms gets auto-detected or check your email and enter OTP below :" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="e5t-EF-B0t">
@@ -459,7 +459,6 @@
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="GenderSelection:" destination="zH8-Id-CCd" eventType="touchUpInside" id="qJN-re-Oda"/>
                                                     <action selector="genderSelection:" destination="FFM-ba-u8M" eventType="touchUpInside" id="9wT-6p-v06"/>
                                                 </connections>
                                             </button>
@@ -470,7 +469,6 @@
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="GenderSelection:" destination="zH8-Id-CCd" eventType="touchUpInside" id="Ujv-N6-93t"/>
                                                     <action selector="genderSelection:" destination="FFM-ba-u8M" eventType="touchUpInside" id="Frm-04-wMU"/>
                                                 </connections>
                                             </button>
@@ -503,7 +501,6 @@
                                                 </state>
                                                 <state key="highlighted" backgroundImage="tuquoise-button-tap"/>
                                                 <connections>
-                                                    <action selector="SubmitPressedAfterMobile:" destination="lQh-mk-ort" eventType="touchUpInside" id="skL-4E-U8C"/>
                                                     <action selector="submitProfile:" destination="FFM-ba-u8M" eventType="touchUpInside" id="NbE-Vt-ZGO"/>
                                                 </connections>
                                             </button>
@@ -559,7 +556,7 @@
                             </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Kew-bZ-i3H" customClass="TPKeyboardAvoidingScrollView">
                                 <rect key="frame" x="0.0" y="98" width="320" height="299"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" id="7Ek-Si-SXs">
                                         <rect key="frame" x="0.0" y="72" width="320" height="156"/>

@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface OfferVC : UIViewController
-
+@property (nonatomic, strong) IBOutlet UITableView *offerTableView;
+@property (nonatomic, strong) NSMutableArray *pagesArray;
 @end

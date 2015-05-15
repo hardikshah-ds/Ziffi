@@ -61,9 +61,12 @@
         
         if ([self FieldValidation]) {
             
+            [SVProgressHUD showWithStatus:@"Loading..."];
             NSString *sessionid = [[NSUserDefaults standardUserDefaults]valueForKey:@"SessionId"];
             [LoginModuleServices UpdateProfile:self.userEmail.text withName:self.userName.text withContactNo:self.userContactno.text withGender:self.userGender withSessionId:sessionid withCompletionHandler:^(bool success) {
                 if (success) {
+                    
+                    [SVProgressHUD dismiss];
                     self.updateProfileView.hidden = YES;
                     self.otpView.hidden = NO;
                 }
@@ -79,10 +82,12 @@
         
         if ([self.textOTP.text length] > 0) {
             
+            [SVProgressHUD showWithStatus:@"Loading..."];
             NSString *sessionid = [[NSUserDefaults standardUserDefaults]valueForKey:@"SessionId"];
             [LoginModuleServices UpdateProfileWithOTP:self.textOTP.text withSessionId:sessionid withContactNo:self.userContactno.text withCompletionHandler:^(bool success) {
                 if (success) {
                     //Redirect to home screen
+                    [SVProgressHUD dismiss];
                     AppDelegate  *appD = (AppDelegate *)[[UIApplication sharedApplication] delegate];
                     [appD LoadStoryBoardWithMainTabModule];
                 }
