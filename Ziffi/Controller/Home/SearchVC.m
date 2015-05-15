@@ -405,12 +405,12 @@
         }
         tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
         cell.textLabel.font = [UIFont fontWithName:FONTLIGHT size:12];
-        cell.textLabel.textColor = [UIColor grayColor];
+        cell.textLabel.textColor = [UIColor darkGrayColor];
     }
     else {
         cell.textLabel.text = [autocompleteUrls objectAtIndex:indexPath.row];
         cell.textLabel.font = [UIFont fontWithName:FONTLIGHT size:12];
-        cell.textLabel.textColor = [UIColor grayColor];
+        cell.textLabel.textColor = [UIColor darkGrayColor];
     }
     return cell;
 }

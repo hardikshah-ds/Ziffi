@@ -38,7 +38,7 @@
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="k5v-ds-uhg">
                             <rect key="frame" x="6" y="6" width="85" height="87"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" red="0.8862745098" green="0.10980392160000001" blue="0.32156862749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </imageView>
                         <view opaque="NO" contentMode="scaleToFill" id="ULu-He-mjc" customClass="HCSStarRatingView">
                             <rect key="frame" x="91" y="8" width="118" height="17"/>
