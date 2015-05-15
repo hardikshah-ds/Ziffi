@@ -15,7 +15,7 @@
 @end
 
 @implementation ListingVC
-@synthesize optionSelected,searchText;
+@synthesize optionSelected,searchText,locationText,currentLat,currentLong;
 @synthesize verticalListingServices=_verticalListingServices;
 @synthesize footerLabel=_footerLabel;
 @synthesize activityIndicator=_activityIndicator;
@@ -50,7 +50,12 @@
             self.vertical = @"diagnostic-centers";
         }
         NSString *sessionid = [[NSUserDefaults standardUserDefaults]valueForKey:@"SessionId"];
-        NSDictionary *dict = [[NSDictionary alloc]initWithObjectsAndKeys:self.vertical,@"vertical",@"4",@"cityid",searchText,@"q",sessionid,@"sessionid",nil];
+        NSString *strCoordinates = [NSString stringWithFormat:@"%@,%@",currentLat,currentLong];
+        NSDictionary *dict = [[NSDictionary alloc]initWithObjectsAndKeys:self.vertical,@"vertical",@"4",@"cityid",searchText,@"q",
+                              sessionid,@"sessionid",
+                              locationText,@"location",
+                              strCoordinates,@"coordinates",
+                              nil];
         self.verticalListingServices = [[VerticalListingServices alloc] initWithPageSize:10 delegate:self];
         [self.verticalListingServices fetchFirstPage:dict];
     }
@@ -206,6 +211,11 @@
     }
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+//    SalonDetailsVC *newView = [self.storyboard instantiateViewControllerWithIdentifier:@"SalonDetailsVC"];
+//    [self.navigationController pushViewController:newView animated:YES];
+}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -231,7 +241,12 @@
         {
             // fetch next page of results
             NSString *sessionid = [[NSUserDefaults standardUserDefaults]valueForKey:@"SessionId"];
-            NSDictionary *dict = [[NSDictionary alloc]initWithObjectsAndKeys:self.vertical,@"vertical",@"4",@"cityid",searchText,@"q",sessionid,@"sessionid",nil];
+            NSString *strCoordinates = [NSString stringWithFormat:@"%@,%@",currentLat,currentLong];
+            NSDictionary *dict = [[NSDictionary alloc]initWithObjectsAndKeys:self.vertical,@"vertical",@"4",@"cityid",searchText,@"q",
+                                  sessionid,@"sessionid",
+                                  locationText,@"location",
+                                  strCoordinates,@"coordinates",
+                                  nil];
             [self.verticalListingServices fetchNextPage:dict];
         }
     }
@@ -299,6 +314,7 @@
     
     for(NSDictionary *result in results)
     {
+        NSLog(@"%@",result);
         [indexPaths addObject:[NSIndexPath indexPathForRow:i inSection:0]];
         i++;
     }

@@ -17,8 +17,10 @@
     NSMutableArray *arrayOfObjects = [[NSMutableArray alloc]init];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    NSDictionary *parameters = @{@"vertical" :[dict objectForKey:@"vertical"],@"city_id" :[NSString stringWithFormat:@"%ld",(long)[[dict objectForKey:@"cityid"]integerValue]],@"q" :[dict objectForKey:@"q"], @"page" : [NSString stringWithFormat:@"%lu",(unsigned long)page],@"session_id" : [dict objectForKey:@"sessionid"]};
-    [manager POST:@"http://www.ziffi.com/api/search" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    NSDictionary *parameters = @{@"vertical" :[dict objectForKey:@"vertical"],@"city_id" :[NSString stringWithFormat:@"%ld",(long)[[dict objectForKey:@"cityid"]integerValue]],@"q" :[dict objectForKey:@"q"], @"page" : [NSString stringWithFormat:@"%lu",(unsigned long)page],@"session_id" : [dict objectForKey:@"sessionid"]
+                                 ,@"coordinates" : [dict objectForKey:@"coordinates"]
+                                 ,@"location" : [dict objectForKey:@"location"]};
+    [manager POST:SEARCHQUERY parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         SBJsonParser *parser = [[SBJsonParser alloc] init];
         NSString *feedStr = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
         NSDictionary *jsonObject = [parser objectWithString:feedStr error:NULL];
@@ -288,11 +290,15 @@
                     NSUInteger totalResult = [[[jsonObject objectForKey:@"meta"]objectForKey:@"total_results"]integerValue];
                     [self receivedResults:arrayOfObjects total:totalResult];
                 }
+                NSData *myEncodedObject = [NSKeyedArchiver archivedDataWithRootObject:arrayOfObjects];
+                NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+                [prefs setObject:myEncodedObject forKey:@"ListingData"];
+                [prefs synchronize];
             }
         }
 
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [CommonFunctions showWarningAlert:error.description title:APP_NAME];
+        [CommonFunctions showWarningAlert:@"We do not seem to have any related salons/spas for sdfdfg in this city." title:APP_NAME];
         [SVProgressHUD dismiss];
     }];
 

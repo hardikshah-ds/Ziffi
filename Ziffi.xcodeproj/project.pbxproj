@@ -12,6 +12,7 @@
 		5644466F1AFC8CA100E04E0D /* ReferVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5644466E1AFC8CA100E04E0D /* ReferVC.m */; };
 		564446721AFC8CB200E04E0D /* BookingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 564446711AFC8CB200E04E0D /* BookingVC.m */; };
 		5644467A1AFC919200E04E0D /* MainTab.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 564446791AFC919200E04E0D /* MainTab.storyboard */; };
+		566D65BA1B05DA8600A96111 /* SalonDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 566D65B91B05DA8600A96111 /* SalonDetailsVC.m */; };
 		568DA8531AF8E8230033C255 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 568DA8521AF8E8230033C255 /* main.m */; };
 		568DA8561AF8E8230033C255 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 568DA8551AF8E8230033C255 /* AppDelegate.m */; };
 		568DA85C1AF8E8230033C255 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 568DA85A1AF8E8230033C255 /* Main.storyboard */; };
@@ -122,6 +123,8 @@
 		564446701AFC8CB200E04E0D /* BookingVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookingVC.h; sourceTree = "<group>"; };
 		564446711AFC8CB200E04E0D /* BookingVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookingVC.m; sourceTree = "<group>"; };
 		564446791AFC919200E04E0D /* MainTab.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainTab.storyboard; sourceTree = "<group>"; };
+		566D65B81B05DA8600A96111 /* SalonDetailsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SalonDetailsVC.h; sourceTree = "<group>"; };
+		566D65B91B05DA8600A96111 /* SalonDetailsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SalonDetailsVC.m; sourceTree = "<group>"; };
 		568DA84D1AF8E8230033C255 /* Ziffi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ziffi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		568DA8511AF8E8230033C255 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		568DA8521AF8E8230033C255 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -339,6 +342,15 @@
 				5644466E1AFC8CA100E04E0D /* ReferVC.m */,
 			);
 			path = Refer;
+			sourceTree = "<group>";
+		};
+		566D65B71B05DA6D00A96111 /* DetailPages */ = {
+			isa = PBXGroup;
+			children = (
+				566D65B81B05DA8600A96111 /* SalonDetailsVC.h */,
+				566D65B91B05DA8600A96111 /* SalonDetailsVC.m */,
+			);
+			path = DetailPages;
 			sourceTree = "<group>";
 		};
 		568DA8441AF8E8230033C255 = {
@@ -593,6 +605,7 @@
 				56AB85DA1B0323BE00C53931 /* SearchVC.m */,
 				5628A2BC1AFCD67100C357DF /* ListingVC.h */,
 				5628A2BD1AFCD67100C357DF /* ListingVC.m */,
+				566D65B71B05DA6D00A96111 /* DetailPages */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -907,6 +920,7 @@
 				568DA9291AF9EAA10033C255 /* SBJsonUTF8Stream.m in Sources */,
 				56EA20D51AFCFFFD001B1E91 /* TPKeyboardAvoidingScrollView.m in Sources */,
 				568DA8D41AF9DDA50033C255 /* AFHTTPSessionManager.m in Sources */,
+				566D65BA1B05DA8600A96111 /* SalonDetailsVC.m in Sources */,
 				568DA9201AF9EAA10033C255 /* SBJsonParser.m in Sources */,
 				56B1AA5F1B04868C00F8037F /* SearchModuleSerivces.m in Sources */,
 				568DA9261AF9EAA10033C255 /* SBJsonStreamWriterAccumulator.m in Sources */,

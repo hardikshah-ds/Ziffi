@@ -20,9 +20,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _locationManager =[[CLLocationManager alloc]init];
-    self.locationManager.delegate = self;
-    [self.locationManager requestWhenInUseAuthorization];
-    [self.locationManager startUpdatingLocation];
+    _locationManager.delegate = self;
+    if([_locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]){
+        [_locationManager requestWhenInUseAuthorization];
+    }else{
+        [_locationManager startUpdatingLocation];
+    }
+    [_locationManager startUpdatingLocation];
     self.view.backgroundColor = [CommonFunctions colorWithHexString:BackGroundColor];
     [self.scrollView contentSizeToFit];
 }
@@ -53,16 +57,39 @@
         
     }else if (status==kCLAuthorizationStatusNotDetermined) {
     
-        [self.locationManager requestWhenInUseAuthorization];
+        [_locationManager requestWhenInUseAuthorization];
         callback(@"No");
     }
     else if (status==kCLAuthorizationStatusAuthorizedWhenInUse || status == kCLAuthorizationStatusAuthorizedAlways) {
         
-        [self.locationManager requestWhenInUseAuthorization];
+        if([_locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]){
+            [_locationManager requestWhenInUseAuthorization];
+        }else{
+            [self.locationManager startUpdatingLocation];
+        }
         callback(self.currentLocality);
     }
     
 }
+
+//#pragma mark - Location Update Method
+//- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
+//    [self.locationManager stopUpdatingLocation];
+//    
+//    CLGeocoder * geoCoder = [[CLGeocoder alloc] init];
+//    [geoCoder reverseGeocodeLocation:newLocation completionHandler:^(NSArray *placemarks, NSError *error) {
+//        for (CLPlacemark * placemark in placemarks) {
+//            //            NSLog(@"placemark.ISOcountryCode %@",placemark.ISOcountryCode);
+//            //            NSLog(@"placemark.country %@",placemark.country);
+//            //            NSLog(@"placemark.postalCode %@",placemark.postalCode);
+//            //            NSLog(@"placemark.administrativeArea %@",placemark.administrativeArea);
+//            //            NSLog(@"placemark.locality %@",placemark.locality);
+//            //            NSLog(@"placemark.subLocality %@",placemark.subLocality);
+//                        NSLog(@"placemark.subThoroughfare %@",placemark.subThoroughfare);
+//            //self.currentLocation.text =placemark.locality;
+//        }
+//    }];
+//}
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     

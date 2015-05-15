@@ -40,6 +40,7 @@
 #import "DoctorsLisitingData.h"
 #import "DiagnosticsListingData.h"
 #import "VerticalListingServices.h"
+#import "SalonDetailsVC.h"
 
 #ifndef Ziffi_Constants_h
 #define Ziffi_Constants_h

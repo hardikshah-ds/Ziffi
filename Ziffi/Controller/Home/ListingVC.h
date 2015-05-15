@@ -21,6 +21,10 @@
 @property (nonatomic, strong) VerticalListingServices *verticalListingServices;
 
 @property (strong, nonatomic) NSString *searchText;
+@property (strong, nonatomic) NSString *locationText;
 @property (nonatomic) NSUInteger optionSelected;
+@property (strong, nonatomic) NSString *currentLat;
+@property (strong, nonatomic) NSString *currentLong;
+
 
 @end

@@ -13,12 +13,16 @@
 
 @property (nonatomic, strong) IBOutlet UITextField *currentLocation;
 @property (nonatomic, strong) IBOutlet UITextField *searchText;
+@property (nonatomic, strong) UITextField *currentTextField;
+
 @property (nonatomic, strong) IBOutlet UITableView *listTableView;
 @property (nonatomic, strong) UITableView *autocompleteTableView;
 @property (nonatomic, strong) NSMutableArray *recentSearchArray;
 @property (nonatomic, strong) NSMutableArray *suggestedArray;
 @property (nonatomic, retain) NSMutableArray *autocompleteUrls;
 @property (nonatomic) NSUInteger optionSelected;
+@property (nonatomic, strong) NSString *currentLocationLat;
+@property (nonatomic, strong) NSString *currentLocationLong;
 
 - (void)searchAutocompleteEntriesWithSubstring:(NSString *)substring;
 

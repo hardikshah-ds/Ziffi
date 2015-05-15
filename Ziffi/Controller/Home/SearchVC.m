@@ -41,6 +41,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
 
+    self.autocompleteTableView.hidden = YES;
     [self.recentSearchArray removeAllObjects];
     [self.suggestedArray removeAllObjects];
     
@@ -118,6 +119,8 @@
     
 }
 
+#pragma mark - TextField Delegate Method
+
 - (void)searchAutocompleteEntriesWithSubstring:(NSString *)substring {
     
     // Put anything that starts with this substring into the autocompleteUrls array
@@ -137,25 +140,50 @@
             vertical = @"diagnostic-centers";
         }
         NSString *sessionid = [[NSUserDefaults standardUserDefaults]valueForKey:@"SessionId"];
-        [SearchModuleSerivces SuggestionListing:vertical withCityId:cityID withSearchText:substring withSessionId:sessionid withCompletionHandler:^(NSDictionary *result) {
-            
-            if (result !=  NULL || result != nil) {
-                NSMutableArray *temp =[result objectForKey:@"q"];
-                if ([temp count] > 0) {
-                    for (int i=0; i<[temp count]; i++)
-                    {
-                        NSDictionary *tempDict = [temp objectAtIndex:i];
-                        [self.autocompleteUrls addObject:[tempDict objectForKey:@"term"]];
-                    }
-                }
-                [self.autocompleteTableView reloadData];
-            }
-            else {
+        
+        if (self.currentTextField == self.currentLocation) {
+            [SearchModuleSerivces LocationSuggestionListing:vertical withCityId:cityID withSearchText:substring withSessionId:sessionid withCompletionHandler:^(NSDictionary *result) {
                 
-                [self.autocompleteTableView reloadData];
-                [SVProgressHUD dismiss];
-            }
-        }];
+                if (result !=  NULL || result != nil) {
+                    NSMutableArray *temp =[result objectForKey:@"location"];
+                    if ([temp count] > 0) {
+                        for (int i=0; i<[temp count]; i++)
+                        {
+                            NSDictionary *tempDict = [temp objectAtIndex:i];
+                            [self.autocompleteUrls addObject:[tempDict objectForKey:@"term"]];
+                        }
+                    }
+                    [self.autocompleteTableView reloadData];
+                }
+                else {
+                    
+                    [self.autocompleteTableView reloadData];
+                    [SVProgressHUD dismiss];
+                }
+            }];
+        }
+        else {
+            [SearchModuleSerivces SuggestionListing:vertical withCityId:cityID withSearchText:substring withSessionId:sessionid withCompletionHandler:^(NSDictionary *result) {
+                
+                if (result !=  NULL || result != nil) {
+                    NSMutableArray *temp =[result objectForKey:@"q"];
+                    if ([temp count] > 0) {
+                        for (int i=0; i<[temp count]; i++)
+                        {
+                            NSDictionary *tempDict = [temp objectAtIndex:i];
+                            [self.autocompleteUrls addObject:[tempDict objectForKey:@"term"]];
+                        }
+                    }
+                    [self.autocompleteTableView reloadData];
+                }
+                else {
+                    
+                    [self.autocompleteTableView reloadData];
+                    [SVProgressHUD dismiss];
+                }
+            }];
+        }
+ 
     }
     else {
         [self.autocompleteTableView reloadData];
@@ -165,6 +193,7 @@
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
+    self.currentTextField = textField;
     if (textField == self.currentLocation) {
             autocompleteTableView = [[UITableView alloc] initWithFrame:CGRectMake(self.currentLocation.frame.origin.x, self.currentLocation.frame.origin.y + 60, self.currentLocation.frame.size.width, 150) style:UITableViewStylePlain];
     }
@@ -203,10 +232,43 @@
     self.autocompleteTableView.hidden = YES;
     return YES;
 }
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    
+    if ([textField.text length] > 0) {
+        [self.recentSearchArray addObject:self.searchText.text];
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        if (optionSelected == 0) {
+            [userDefaults setObject:self.recentSearchArray forKey:@"SalonRecent"];
+        }
+        else if (optionSelected == 1)
+        {
+            [userDefaults setObject:self.recentSearchArray forKey:@"DoctorsRecent"];
+        }
+        else {
+            [userDefaults setObject:self.recentSearchArray forKey:@"DiagnosticsRecent"];
+        }
+        [userDefaults synchronize];
+        ListingVC *newView = [self.storyboard instantiateViewControllerWithIdentifier:@"ListingVC"];
+        newView.optionSelected = optionSelected;
+        newView.searchText = self.searchText.text;
+        newView.locationText = self.currentLocation.text;
+        newView.currentLat =  self.currentLocationLat;
+        newView.currentLong = self.currentLocationLong;
+        [self.navigationController pushViewController:newView animated:YES];
+    }
+
+    return YES;
+}
+
 #pragma mark - Location Update Method
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
     [self.locationManager stopUpdatingLocation];
     
+    self.currentLocationLat = [NSString stringWithFormat:@"%.2f",newLocation.coordinate.latitude];
+    self.currentLocationLong = [NSString stringWithFormat:@"%.2f",newLocation.coordinate.longitude];
     CLGeocoder * geoCoder = [[CLGeocoder alloc] init];
     [geoCoder reverseGeocodeLocation:newLocation completionHandler:^(NSArray *placemarks, NSError *error) {
         for (CLPlacemark * placemark in placemarks) {
@@ -225,31 +287,6 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-#pragma mark - TextField Delegate Method
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-    [textField resignFirstResponder];
-    [self.recentSearchArray addObject:self.searchText.text];
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    if (optionSelected == 0) {
-        [userDefaults setObject:self.recentSearchArray forKey:@"SalonRecent"];
-    }
-    else if (optionSelected == 1)
-    {
-        [userDefaults setObject:self.recentSearchArray forKey:@"DoctorsRecent"];
-    }
-    else {
-        [userDefaults setObject:self.recentSearchArray forKey:@"DiagnosticsRecent"];
-    }
-    [userDefaults synchronize];
-    ListingVC *newView = [self.storyboard instantiateViewControllerWithIdentifier:@"ListingVC"];
-    newView.optionSelected = optionSelected;
-    newView.searchText = self.searchText.text;
-    [self.navigationController pushViewController:newView animated:YES];
-    return YES;
 }
 
 
@@ -381,9 +418,14 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
-    ListingVC *newView = [self.storyboard instantiateViewControllerWithIdentifier:@"ListingVC"];
-    newView.optionSelected = optionSelected;
+    
     if (tableView == self.listTableView) {
+        
+        ListingVC *newView = [self.storyboard instantiateViewControllerWithIdentifier:@"ListingVC"];
+        newView.optionSelected = optionSelected;
+        newView.locationText = self.currentLocation.text;
+        newView.currentLat =  self.currentLocationLat;
+        newView.currentLong = self.currentLocationLong;
         if (indexPath.section == 0) {
             newView.searchText = [self.recentSearchArray objectAtIndex:indexPath.row];
         }
@@ -391,13 +433,29 @@
             newView.searchText = [self.suggestedArray objectAtIndex:indexPath.row];
             
         }
+        [self.navigationController pushViewController:newView animated:YES];
     }
     else{
-        UITableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
-        newView.searchText = selectedCell.textLabel.text;
+        
+        if (self.currentTextField == self.currentLocation) {
+            UITableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
+            self.currentLocation.text = selectedCell.textLabel.text;
+            self.autocompleteTableView.hidden = YES;
+        }
+        else{
+            
+            ListingVC *newView = [self.storyboard instantiateViewControllerWithIdentifier:@"ListingVC"];
+            newView.optionSelected = optionSelected;
+            newView.locationText = self.currentLocation.text;
+            newView.currentLat =  self.currentLocationLat;
+            newView.currentLong = self.currentLocationLong;
+            UITableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
+            newView.searchText = selectedCell.textLabel.text;
+            [self.navigationController pushViewController:newView animated:YES];
+        }
     }
 
-    [self.navigationController pushViewController:newView animated:YES];
+    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
